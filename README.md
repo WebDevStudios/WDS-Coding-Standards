@@ -2,7 +2,7 @@
 A repository to house all our linting and coding standards.
 
 ## PHP Code Sniffer
-The PHP CS ruleset exists under the `/phpcs` folder of the repo, this is so later we can add custom sniffs, and maybe even dependant rulesets.
+The PHP CS ruleset exists under the `/WebDevStudios-phpcs` folder of the repo, this is so later we can add custom sniffs, and maybe even dependant rulesets.
 
 ### Installation
 * Clone the repo to your desired location
@@ -18,13 +18,13 @@ installed_paths: /home/wpcs
 * Set your installed standards path(s).
 
 ```
-phpcs --config-set installed_paths /home/WDS-Coding_Standards/phpcs
+phpcs --config-set installed_paths /home/WDS-Coding-Standards/WebDevStudios-phpcs
 ```
 
 If you alread had an installed path, just add that with a comma
 
 ```
-phpcs --config-set installed_paths /home/WDS-Coding_Standards/phpcs,/home/wpcs
+phpcs --config-set installed_paths /home/WDS-Coding_Standards/WebDevStudios-phpcs,/home/wpcs
 ```
 
 > Full list of [Configuration Options](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options) over at the PHP_CodeSniffer wiki.
