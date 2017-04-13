@@ -10,7 +10,7 @@ The PHP CS ruleset exists under the `/WebDevStudios-phpcs` folder of the repo, t
 
 __(Example output)__
 ```
-$ phpcs --config-show
+$> phpcs --config-show
 installed_paths: /home/wpcs
 ```
 
@@ -25,6 +25,13 @@ If you alread had an installed path, just add that with a comma
 
 ```
 phpcs --config-set installed_paths /home/WDS-Coding_Standards/WebDevStudios-phpcs,/home/wpcs
+```
+
+* Confirm your installation is complete
+
+```
+$> phpcs -i
+The installed coding standards are PSR1, Squiz, MySource, PSR2, Zend, PEAR, PHPCS, WebDevStudios-phpcs, WordPress-Core, WordPress-VIP, WordPress-Extra, WordPress-Docs and WordPress
 ```
 
 > Full list of [Configuration Options](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options) over at the PHP_CodeSniffer wiki.
