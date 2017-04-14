@@ -15,4 +15,20 @@
     <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
   </rule>
 
+  <!-- Proper docblocks, thanks to Squiz -->
+  <rule ref="Squiz.Commenting.FunctionComment"/>
+
+  <!-- This isn't Java, no need to force function var type-casting -->
+  <rule name="Squiz.Commenting.FunctionComment.TypeHintMissing">
+    <severity>0</severity>
+  </rule>
+
+  <!-- Doc block alignments -->
+  <rule ref="Squiz.Commenting.DocCommentAlignment" />
+
+  <!-- In some cases this isn't possible to catch -->
+  <rule ref="Squiz.PHP.DisallowMultipleAssignments.Found">
+    <severity>0</severity>
+  </rule>
+
 </ruleset>
