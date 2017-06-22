@@ -15,6 +15,9 @@
     <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
   </rule>
 
+  <!-- Include WordPress-Docs -->
+  <rule ref="WordPress-Docs"/>
+
   <!-- Doc block alignments -->
   <rule ref="Squiz.Commenting.DocCommentAlignment" />
 
