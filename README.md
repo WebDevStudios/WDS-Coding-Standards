@@ -47,6 +47,10 @@ ____________________
 
 - Changed `WebDevStudios-phpcs` to just `WebDevStudios` for compatibility with namespaces and new sniffs added later [#12](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/12)
 
+Note, this release breaks some things. When you update to this version,
+you will need to update your coding standard to `WebDevStudios` vs the old
+`WebDevStudios-phpcs` which should no longer work.
+
 ## 1.0
 
 - Initial ruleset based on WordPress-Extra
