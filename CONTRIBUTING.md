@@ -9,7 +9,7 @@ When adding __any__ changes, each change must go through the following PR proces
 - Add the PR to the release milestone too
 - PR must be tested at least against Sublime, Atom, PHP Storm, and CLI; there are labels for each of these and must have them all (request this from other users of these editors, or some may volunteer)
 - Once the PR has been tested in all editors, a complete review from a Senior Developer and a Lead is required (Add the `Lead/Senior Review Needed` label so we can notice those, remove this label when the two reviews are done)
-- Once your PR has the correct number of votes, and is fully reviewed, it can only be merged into `master` by a lead (add the `Ready For Lead Merge` label when it's ready for this)
+- Once your PR has the correct number of votes, and is fully reviewed, it can only be merged into `master` by a lead (add the `Ready For Lead Merge` label when it's ready for this, or the lead can just merge it right in)
 
 # Additional Approval of New Rules
 
