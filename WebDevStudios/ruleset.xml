@@ -13,6 +13,7 @@
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
     <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
     <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
+    <exclude name="Squiz.Commenting.LongConditionClosingComment.Invalid" /><!-- replaced with our own -->
   </rule>
 
   <!-- Doc block alignments -->
