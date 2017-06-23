@@ -1,11 +1,14 @@
 # WDS-Coding-Standards
-A repository to house all our linting and coding standards.
 
-## PHP Code Sniffer
+A repository to house WDS linting and coding standards.
 
-The PHP CS ruleset exists under the `/WebDevStudios` folder of the repo, this is so later we can add custom sniffs, and maybe even dependant rulesets.
+## Want to Contribute?
 
-### Installation
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+_______________________
+
+# Installation
 
 * Clone the repo to your desired location
 * Check if you already have `installed_paths` set by running `phpcs --config-show`
@@ -17,27 +20,30 @@ $> phpcs --config-show
 installed_paths: /home/wpcs
 ```
 
-* Copy that path if you have one.
-* Set your installed standards path(s).
+## Set your installed standards path(s).
 
 ```
-phpcs --config-set installed_paths /home/WDS-Coding-Standards/WebDevStudios
+phpcs --config-set installed_paths /home/WDS-Coding-Standards/WebDevStudios,/home/wpcs
 ```
 
-If you alread had an installed path, just add that with a comma
+## WordPress Coding Standards
+
+If you already had an installed path, just add that with a comma. Note that
+the [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
+should be installed in separately and included in your `installed_paths`. We
+simply add WebDevStudios standards in _addition_ to WPCS.
+
+## Confirm your installation is complete
 
 ```
-phpcs --config-set installed_paths /home/WDS-Coding_Standards/WebDevStudios,/home/wpcs
-```
-
-* Confirm your installation is complete
-
-```
-$> phpcs -i
+$ phpcs -i
 The installed coding standards are PSR1, Squiz, MySource, PSR2, Zend, PEAR, PHPCS, WebDevStudios, WordPress-Core, WordPress-VIP, WordPress-Extra, WordPress-Docs and WordPress
 ```
 
 > Full list of [Configuration Options](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options) over at the PHP_CodeSniffer wiki.
+
+You should, at this point, be able to `phpcs --standard=WebDevStudios` and set
+`WebDevStudios` as your standard in your favorite editors.
 
 ____________________
 
