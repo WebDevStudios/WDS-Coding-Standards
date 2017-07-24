@@ -11,6 +11,9 @@ _______________________
 # Installation
 
 * Clone the repo to your desired location
+
+## PHPCS
+
 * Check if you already have `installed_paths` set by running `phpcs --config-show`
 
 #### Example output
@@ -20,20 +23,20 @@ $> phpcs --config-show
 installed_paths: /home/wpcs
 ```
 
-## Set your installed standards path(s).
+### Set your installed standards path(s).
 
 ```
 phpcs --config-set installed_paths /home/WDS-Coding-Standards/WebDevStudios,/home/wpcs
 ```
 
-## WordPress Coding Standards
+### WordPress Coding Standards
 
 If you already had an installed path, just add that with a comma. Note that
 the [WordPress Coding Standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
 should be installed in separately and included in your `installed_paths`. We
 simply add WebDevStudios standards in _addition_ to WPCS.
 
-## Confirm your installation is complete
+### Confirm your installation is complete
 
 ```
 $ phpcs -i
@@ -44,6 +47,38 @@ The installed coding standards are PSR1, Squiz, MySource, PSR2, Zend, PEAR, PHPC
 
 You should, at this point, be able to `phpcs --standard=WebDevStudios` and set
 `WebDevStudios` as your standard in your favorite editors.
+
+## ESLint (JavaScript Linting)
+
+ESLint does not have a _default_ configuration file option, so when running `eslint` you need to
+specify the config file located in this repo, `eslintrc.js`, e.g.
+
+`eslint --config=~/path/to/WDS-Coding-Standards/WebDevStudios/eslintrc.js file.js`
+
+Also if you are running eslint globally you need to install `eslint-config-wordpress` globally:
+
+`npm install -g eslint-config-wordpress`
+
+### Sublime Linter
+
+The [SublimeLinter-contrib-eslint](https://github.com/roadhump/SublimeLinter-eslint) package
+can be configured to use our eslint config file by default using the settings for `eslint` below:
+
+``` json
+"linters": {
+		"eslint": {
+				"@disable": false,
+				"args": [
+						// Use our config file when you run it.
+						"--config=/Users/path/to/WebDevStudios/eslintrc.js",
+						"--no-eslintrc"
+				],
+				"excludes": []
+		},
+},
+```
+
+_You may need to disable your old jshint package._
 
 ____________________
 
