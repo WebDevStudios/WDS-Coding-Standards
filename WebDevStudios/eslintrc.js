@@ -245,6 +245,17 @@ module.exports = {
 		 * @author Aubrey Portwood
 		 * @since  1.1
 		 */
-		'no-unused-vars': 'error'
+		'no-unused-vars': 'error',
+
+		/**
+		 * No use of console so long as we support older browsers.
+		 *
+		 * Also, this is debug code, so we should not keep that
+		 * within out code to VC.
+		 *
+		 * @author Aubrey Portwood
+		 * @since  1.1
+		 */
+		'no-console': 'error'
 	}
 };
