@@ -267,6 +267,45 @@ module.exports = {
 		 * @since  1.1
 		 * @author Aubrey Portwood
 		 */
-		'no-debugger': 'error'
+		'no-debugger': 'error',
+
+		/**
+		 * Require valid jsdoc blocks.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'valid-jsdoc': [ 'error', {
+
+			// If and only if the function or method has a return statement (this option value does apply to constructors)
+			'requireReturn': false
+		} ],
+
+		/**
+		 * Require docblocks.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'require-jsdoc': 'error',
+
+		/**
+		 * Require that typeof tests use proper strings.
+		 *
+		 * e.g. undefined === typeof var will fail,
+		 * while 'undefined' === typeof var will pass.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'valid-typeof': 'warn',
+
+		/**
+		 * Enforce declarations not expressions.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'func-style': [ 'error', 'declaration' ]
 	}
 };
