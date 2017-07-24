@@ -85,7 +85,7 @@ module.exports = {
 		'space-before-function-paren': [ 'error', 'never' ],
 
 		// Require or disallow space before blocks
-		'space-in-parens': [ 'error', 'always', { exceptions: [ '{}', '[]' ] } ],
+		'space-in-parens': [ 'error', 'always' ],
 
 		// Require spaces around operators
 		'space-infix-ops': 'error',
