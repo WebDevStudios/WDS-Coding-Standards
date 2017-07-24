@@ -1,8 +1,16 @@
+/* globals module */
 module.exports = {
 	'env': {
 		'browser': true,
 		'jquery': true,
 		'es6': true
+	},
+	'globals': {
+		'_': false,
+		'Backbone': false,
+		'jQuery': false,
+		'JSON': false,
+		'wp': false
 	},
 	'extends': 'wordpress',
 	'plugins': [],
@@ -306,6 +314,89 @@ module.exports = {
 		 * @since  1.1
 		 * @author Aubrey Portwood
 		 */
-		'func-style': [ 'error', 'declaration' ]
+		'func-style': [ 'error', 'declaration' ],
+
+		/**
+		 * Require == and !== where necessary.
+		 *
+		 * @author Aubrey Portwood
+		 * @since  1.1
+		 */
+		'eqeqeq': 'error',
+
+		/**
+		 * Require that braces be used.
+		 *
+		 * E.g.
+		 *
+		 *     if ( foo ) return;
+		 *
+		 * would be bad, but
+		 *
+		 *     if ( foo ) {
+		 *         return;
+		 *     }
+		 *
+		 * would pass.
+		 *
+		 * @author Aubrey Portwood
+		 * @since  1.1
+		 */
+		'curly': 'error',
+
+		/**
+		 * Disallow null comparisons without type-checking operators.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'no-eq-null': 'error',
+
+		/**
+		 * Must use radix in parseInt.
+		 *
+		 * e.g.
+		 *
+		 *     var a = 1.22;
+		 *     var b = parseInt( a, 10 ); // Radix used here
+		 *
+		 * @author Aubrey Portwood
+		 * @since  1.1
+		 */
+		'radix': 'error',
+
+		/**
+		 * Force undefined variables to be in globals.
+		 *
+		 * E.g.
+		 *
+		 *     function a() {
+		 *
+		 *         // Below jQuery is undefined as it's included as a library.
+		 *         return jQuery( '#id' );
+		 *     }
+		 *
+		 * To fix:
+		 *
+		 *     // globals jQuery;
+		 *
+		 *     function a() {
+		 *
+		 *         // Below jQuery is undefined as it's included as a library.
+		 *         return jQuery( '#id' );
+		 *     }
+		 *
+		 * @author Aubrey Portwood
+		 * @since 1.1
+		 */
+		'no-undef': 'error',
+
+		/**
+		 * camelCaseAllTheThings.
+		 *
+		 * @author Aubrey Portwood
+		 * @since  1.1
+		 */
+		'camelcase': 'error'
 	}
 };
