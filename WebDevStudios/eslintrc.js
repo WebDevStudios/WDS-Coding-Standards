@@ -92,7 +92,7 @@ module.exports = {
 
 		// Require or disallow spaces before/after unary operators (words on by default, nonwords)
 		'space-unary-ops': [ 'error', {
-			overrides: {'!': true}
+			overrides: { '!': true }
 		} ],
 
 		/*
@@ -104,6 +104,9 @@ module.exports = {
 		'vars-on-top': 'warn',
 
 		// Require or disallow Yoda conditions
-		'yoda': [ 'error', 'always' ]
+		'yoda': [ 'error', 'always' ],
+
+		// Always show an error when a variable is created that is never used.
+		'no-unused-vars': 'error'
 	}
 };
