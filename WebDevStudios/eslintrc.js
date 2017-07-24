@@ -70,7 +70,7 @@ module.exports = {
 			overrides: {'!': true}
 		}],
 		// Requires to declare all vars on top of their containing scope
-		'vars-on-top': 'error',
+		'vars-on-top': [ 'error', 'never' ],
 		// Require or disallow Yoda conditions
 		'yoda': ['error', 'always']
 	}
