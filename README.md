@@ -12,7 +12,7 @@ _______________________
 
 * Clone the repo to your desired location
 
-## PHPCS
+## PHPCS (PHP Linting)
 
 * Check if you already have `installed_paths` set by running `phpcs --config-show`
 
