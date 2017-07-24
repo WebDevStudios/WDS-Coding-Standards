@@ -66,15 +66,14 @@ can be configured to use our eslint config file by default using the settings fo
 
 ``` json
 "linters": {
-		"eslint": {
-				"@disable": false,
-				"args": [
-						// Use our config file when you run it.
-						"--config=/Users/path/to/WebDevStudios/eslintrc.js",
-						"--no-eslintrc"
-				],
-				"excludes": []
-		},
+	"eslint": {
+		"@disable": false,
+		"args": [
+			"--config=/Users/path/to/WebDevStudios/eslintrc.js",
+			"--no-eslintrc"
+		],
+		"excludes": []
+	},
 },
 ```
 
