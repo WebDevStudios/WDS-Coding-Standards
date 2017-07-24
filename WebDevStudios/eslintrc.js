@@ -248,14 +248,25 @@ module.exports = {
 		'no-unused-vars': 'error',
 
 		/**
-		 * No use of console so long as we support older browsers.
+		 * No use of console.
 		 *
-		 * Also, this is debug code, so we should not keep that
-		 * within out code to VC.
+		 * Use of console can be done safely with checking
+		 * window.console and running it from there.
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
 		 */
-		'no-console': 'error'
+		'no-console': 'error',
+
+		/**
+		 * No use of debugger.
+		 *
+		 * This is because we often can leave it in the code,
+		 * this draws a nice red line around it.
+		 *
+		 * @since  1.1
+		 * @author Aubrey Portwood
+		 */
+		'no-debugger': 'error'
 	}
 };
