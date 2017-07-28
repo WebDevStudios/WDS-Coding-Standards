@@ -85,7 +85,7 @@ ____________________
 
 ## 1.1
 
-- Brings over eslint rules from wd_s and improves them to be more like old jshint rules from WordPress.org coding standards [#10](https://github.com/WebDevStudios/WDS-Coding-Standards/issues/10) [#18](https://github.com/WebDevStudios/WDS-Coding-Standards/issues/18)
+- Brings over eslint rules from wd_s and improves them to be more like old jshint rules from WordPress.org coding standards [#10](https://github.com/WebDevStudios/WDS-Coding-Standards/issues/10) [#22](https://github.com/WebDevStudios/WDS-Coding-Standards/issues/22)
 
 ## 1.0.1
 
