@@ -26,8 +26,11 @@ installed_paths: /home/wpcs
 ### Set your installed standards path(s).
 
 ```
-phpcs --config-set installed_paths /home/WDS-Coding-Standards/WebDevStudios,/home/wpcs
+phpcs --config-set installed_paths /home/WDS-Coding-Standards,/home/wpcs
 ```
+
+_It's important to note that you do not want to point `phpcs` to the `WebDevStudios`
+folder._
 
 ### WordPress Coding Standards
 
