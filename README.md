@@ -59,7 +59,9 @@ Also if you are running eslint globally you need to install `eslint-config-wordp
 
 `npm install -g eslint-config-wordpress`
 
-### Sublime Linter
+_You may need to disable your old jshint package._
+
+### Sublime
 
 The [SublimeLinter-contrib-eslint](https://github.com/roadhump/SublimeLinter-eslint) package
 can be configured to use our eslint config file by default using the settings for `eslint` below:
@@ -77,7 +79,15 @@ can be configured to use our eslint config file by default using the settings fo
 },
 ```
 
-_You may need to disable your old jshint package._
+### Atom
+
+Once you get `linter-eslint` installed, you can tell it to use our custom ruleset using:
+
+![](https://cloudup.com/cq9nwuickFr+?r.png)
+
+You may have to enable this option:
+
+![](https://cloudup.com/c_vUkLklUQE+?r.png)
 
 ____________________
 
