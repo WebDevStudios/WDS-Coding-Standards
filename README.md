@@ -92,6 +92,14 @@ You may have to enable this option:
 
 ![](https://cloudup.com/c_vUkLklUQE+?r.png)
 
+### PHPStorm
+Setting the eslint file in PHPStorm is easy, but you must have node and the ESLint package installed.
+Open up your settings panel and search for eslint, or navigate to the following:
+* `Languages & Frameworks > JavScript > Code Quality Tools > ESLint`
+
+![](https://i.gyazo.com/26b54154c5643476cb5164e2147c860f.png)
+
+Now set the configuration file to the file in `WebDevStudios/eslintrc.js`
 ____________________
 
 # Changelog
