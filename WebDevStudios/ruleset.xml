@@ -26,4 +26,6 @@
 	<rule ref="Squiz.PHP.DisallowMultipleAssignments.Found">
 		<severity>0</severity>
 	</rule>
+
+	<rule ref="WebDevStudios.Commenting.Base" />
 </ruleset>
