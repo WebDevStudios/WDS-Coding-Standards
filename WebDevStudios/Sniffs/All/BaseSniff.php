@@ -6,7 +6,7 @@
  * @package  WebDevStudios\Sniffs
  */
 
-namespace WebDevStudios\Sniffs\Commenting;
+namespace WebDevStudios\Sniffs\All;
 use PHP_CodeSniffer_Sniff;
 
 /**

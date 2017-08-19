@@ -1,6 +1,6 @@
 <?php // @codingStandardsIgnoreLine: Filename is ok.
 
-namespace WebDevStudios\Sniffs\Commenting;
+namespace WebDevStudios\Sniffs\All;
 use PHP_CodeSniffer_Sniff;
 use PHP_CodeSniffer_File;
 
