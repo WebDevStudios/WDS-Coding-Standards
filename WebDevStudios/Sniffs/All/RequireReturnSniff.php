@@ -86,7 +86,7 @@ class RequireReturnSniff extends BaseSniff {
 			return $this->record( (object) [
 				'message' => 'Please document your return for this function.',
 				'start'   => $doc_block_end,
-				'error'   => 'Missing',
+				'error'   => 'MissingReturnTag',
 				'metric'  => 'yes',
 			], $file );
 		}
@@ -95,7 +95,7 @@ class RequireReturnSniff extends BaseSniff {
 			return $this->record( (object) [
 				'message' => 'Your function does not return anything, no need for @return tag.',
 				'start'   => $doc_block_end,
-				'error'   => 'Missing',
+				'error'   => 'ReturnsNothing',
 				'metric'  => 'yes',
 			], $file );
 		}
