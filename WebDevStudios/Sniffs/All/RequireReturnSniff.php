@@ -89,7 +89,7 @@ class RequireReturnSniff extends BaseSniff {
 		}
 
 		if ( ! $have_an_at_return_tag && 'has_return_statement' === $examine_function ) {
-			$this->error( $file, $doc_block_end, 'Please document your return for this function.' );
+			$this->error( $file, $doc_block_end, 'Please document your return for this function in an @return tag.' );
 		}
 
 		if ( $have_an_at_return_tag && 'no_return_statement' === $examine_function ) {
