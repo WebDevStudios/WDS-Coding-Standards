@@ -85,17 +85,20 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	private function console( $args, &$phpcs_file ) {
 		$args->log = strtolower( $args->log );
 
+		// Create a unique error code for this message.
+		$code = sha1( $args->message );
+
 		if ( stristr( $args->log, 'error' ) ) {
 
-			// Log as a error.
-			$phpcs_file->addError( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+			// Log as an error.
+			$phpcs_file->addError( $args->message, $args->start, $code, array(), $args->severity );
 			return;
 		}
 
 		if ( stristr( $args->log, 'warning' ) ) {
 
-			// Log as an warning.
-			$phpcs_file->addWarning( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+			// Log as a warning.
+			$phpcs_file->addWarning( $args->message, $args->start, $code, array(), $args->severity );
 			return;
 		}
 	}
