@@ -10,7 +10,7 @@ namespace WebDevStudios\Sniffs\All;
 use PHP_CodeSniffer_Sniff;
 
 /**
- * Base class for extending so you can get common tools.
+ * Base class for extending so you can get the below common tools.
  *
  * @since  1.1
  */
