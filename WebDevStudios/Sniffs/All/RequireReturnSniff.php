@@ -84,7 +84,7 @@ class RequireReturnSniff extends BaseSniff {
 
 		if ( ! $have_an_at_return_tag && 'has_return_statement' === $examine_function ) {
 			return $this->record( (object) [
-				'message' => 'You have no @return tag, but there is a return statement in your function.',
+				'message' => 'Please document your return for this function.',
 				'start'   => $doc_block_end,
 				'error'   => 'Missing',
 				'metric'  => 'yes',
@@ -93,7 +93,7 @@ class RequireReturnSniff extends BaseSniff {
 
 		if ( $have_an_at_return_tag && 'no_return_statement' === $examine_function ) {
 			return $this->record( (object) [
-				'message' => 'You have an @return tag, but no return statement found.',
+				'message' => 'Your function does not return anything, no need for @return tag.',
 				'start'   => $doc_block_end,
 				'error'   => 'Missing',
 				'metric'  => 'yes',
