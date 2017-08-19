@@ -35,7 +35,7 @@
 
 			./All
 
-		We will then load ./All/BaseSniff.php as a base class.
+		We will first load ./All/BaseSniff.php as a base class.
 		Then we will load ./All/*.php of other rules that extend the BaseSniff class.
 
 		There is no need to add any of the other rules here as long as they
