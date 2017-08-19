@@ -79,6 +79,8 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 *     @type string $log     Whether to log an `error` or a `warning`.
 	 * }
 	 * @param PHP_CodeSniffer_File $phpcs_file The file.
+	 *
+	 * @return void Early bail when we finally log to the console.
 	 */
 	private function console( $args, &$phpcs_file ) {
 		$args->log = strtolower( $args->log );
@@ -87,12 +89,14 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 
 			// Log as a error.
 			$phpcs_file->addError( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+			return;
 		}
 
 		if ( stristr( $args->log, 'warning' ) ) {
 
 			// Log as an warning.
 			$phpcs_file->addWarning( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+			return;
 		}
 	}
 
