@@ -1,4 +1,10 @@
 <?php // @codingStandardsIgnoreLine: Filename is ok.
+/**
+ * Require the @return tag.
+ *
+ * @since   1.1.0
+ * @package WebDevStudios\Sniffs
+ */
 
 namespace WebDevStudios\Sniffs\All;
 use PHP_CodeSniffer_Sniff;
@@ -8,7 +14,7 @@ use PHP_CodeSniffer_File;
  * Require the @return tag.
  *
  * @author Aubrey Portwood
- * @since  1.1
+ * @since  1.1.0
  */
 class RequireReturnSniff extends BaseSniff {
 
@@ -16,7 +22,7 @@ class RequireReturnSniff extends BaseSniff {
 	 * What are we parsing?
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
 	 *
 	 * @var array
 	 */
@@ -29,7 +35,7 @@ class RequireReturnSniff extends BaseSniff {
 	 * Register on all docblock comments.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
 	 *
 	 * @return array List of tokens.
 	 */
@@ -49,7 +55,7 @@ class RequireReturnSniff extends BaseSniff {
 	 * Process file.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
 	 *
 	 * @param  PHP_CodeSniffer_File $file            The file object.
 	 * @param  int                  $doc_block_start Where the docblock starts.
@@ -83,21 +89,11 @@ class RequireReturnSniff extends BaseSniff {
 		}
 
 		if ( ! $have_an_at_return_tag && 'has_return_statement' === $examine_function ) {
-			return $this->record( (object) [
-				'message' => 'Please document your return for this function.',
-				'start'   => $doc_block_end,
-				'error'   => 'MissingReturnTag',
-				'metric'  => 'yes',
-			], $file );
+			$this->error( $file, $doc_block_end, 'Please document your return for this function.' );
 		}
 
 		if ( $have_an_at_return_tag && 'no_return_statement' === $examine_function ) {
-			return $this->record( (object) [
-				'message' => 'Your function does not return anything, no need for @return tag.',
-				'start'   => $doc_block_end,
-				'error'   => 'ReturnsNothing',
-				'metric'  => 'yes',
-			], $file );
+			$this->error( $file, $doc_block_end, 'Your function does not return anything, no need for @return tag.' );
 		}
 	}
 

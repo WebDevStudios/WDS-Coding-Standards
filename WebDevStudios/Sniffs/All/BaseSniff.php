@@ -2,8 +2,8 @@
 /**
  * Shared functionality for all sub-classes.
  *
- * @since  1.1
- * @package  WebDevStudios\Sniffs
+ * @since   1.1.0
+ * @package WebDevStudios\Sniffs
  */
 
 namespace WebDevStudios\Sniffs\All;
@@ -12,7 +12,7 @@ use PHP_CodeSniffer_Sniff;
 /**
  * Base class for extending so you can get the below common tools.
  *
- * @since  1.1
+ * @since  1.1.0
  */
 abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 
@@ -20,37 +20,87 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * The tokens.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
 	 *
 	 * @var array
 	 */
 	protected $tokens;
 
 	/**
-	 * Record something.
+	 * Push an error to the console.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
+	 *
+	 * @param  PHP_CodeSniffer_File $file     The file.
+	 * @param  int                  $where    Where the error happened.
+	 * @param  string               $message  The message.
+	 * @param  int                  $severity The severity, defaults to 0.
+	 */
+	protected function error( &$file, $where, $message, $severity = 0 ) {
+		$this->console( (object) array(
+			'message'  => $message,
+			'start'    => $where,
+			'log'      => 'error',
+			'severity' => $severity,
+		), $file );
+	}
+
+	/**
+	 * Push a warning to the console.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  1.1.0
+	 *
+	 * @param  PHP_CodeSniffer_File $file     The file.
+	 * @param  int                  $where    Where the warning happened.
+	 * @param  string               $message  The message.
+	 * @param  int                  $severity The severity, defaults to 0.
+	 */
+	protected function warn( &$file, $where, $message, $severity = 0 ) {
+		$this->console( (object) array(
+			'message'  => $message,
+			'start'    => $where,
+			'log'      => 'warning',
+			'severity' => $severity,
+		), $file );
+	}
+
+	/**
+	 * Record something to the console.
+	 *
+	 * @author Aubrey Portwood
+	 * @since  1.1.0
 	 *
 	 * @param array                $args {
 	 *     Arguments.
 	 *     @type string $message The message.
 	 *     @type int    $start   The starting position of the record.
-	 *     @type string $error   The simple error message.
-	 *     @type string $metric  The text to record for the metric.
+	 *     @type string $log     Whether to log an `error` or a `warning`.
 	 * }
 	 * @param PHP_CodeSniffer_File $phpcs_file The file.
 	 */
-	protected function record( $args, &$phpcs_file ) {
-		$phpcs_file->addError( $args->message, $args->start, $args->error );
-		$phpcs_file->recordMetric( $args->start, $args->message, $args->metric );
+	private function console( $args, &$phpcs_file ) {
+		$args->log = strtolower( $args->log );
+
+		if ( stristr( $args->log, 'error' ) ) {
+
+			// Log as a error.
+			$phpcs_file->addError( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+		}
+
+		if ( stristr( $args->log, 'warning' ) ) {
+
+			// Log as an warning.
+			$phpcs_file->addWarning( $args->message, $args->start, md5( $args->message ), array(), $args->severity );
+		}
 	}
 
 	/**
 	 * Get token.
 	 *
 	 * @author Aubrey Portwood
-	 * @since  1.1
+	 * @since  1.1.0
 	 *
 	 * @param int    $position The position of the token.
 	 * @param string $key      The key you want from the array daya, leave empty to get all data.
