@@ -115,7 +115,7 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @return mixed An array of data if you request all information, any type given the key may be any type in the array.
 	 */
 	protected function get_token( $position, $key = '' ) {
-		if ( ! empty( $key ) ) {
+		if ( ! empty( $key ) && isset( $this->tokens[ $position ][ $key ] ) ) {
 			return $this->tokens[ $position ][ $key ];
 		}
 

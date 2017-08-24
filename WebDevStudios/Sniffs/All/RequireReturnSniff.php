@@ -1,6 +1,9 @@
 <?php // @codingStandardsIgnoreLine: Filename is ok.
 /**
- * Require the @return tag.
+ * Require the return tag.
+ *
+ * This requires the return tag when you have an return statement
+ * inside of the function.
  *
  * @since   1.1.0
  * @package WebDevStudios\Sniffs
@@ -11,7 +14,7 @@ use PHP_CodeSniffer_Sniff;
 use PHP_CodeSniffer_File;
 
 /**
- * Require the @return tag.
+ * Require the return tag.
  *
  * @author Aubrey Portwood
  * @since  1.1.0
@@ -46,6 +49,7 @@ class RequireReturnSniff extends BaseSniff {
 			 * PHP/JS Docblock.
 			 *
 			 * @link http://php.net/manual/en/language.basic-syntax.comments.php
+			 * @since 1.1.0
 			 */
 			T_DOC_COMMENT_OPEN_TAG,
 		];
@@ -106,6 +110,7 @@ class RequireReturnSniff extends BaseSniff {
 	 *     @type string $doc_block_end Where the docblock ends.
 	 * }
 	 *
+	 * @since 1.1.0
 	 * @return string Contextual information about the function (if it is a function).
 	 */
 	protected function examine_function( PHP_CodeSniffer_File &$file, $args ) {
