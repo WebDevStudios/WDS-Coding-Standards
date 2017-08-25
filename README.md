@@ -8,6 +8,11 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 _______________________
 
+# Changelog
+
+1.1
+* Add vim configuration section to `README.md`
+
 # Installation
 
 * Clone the repo to your desired location
@@ -50,6 +55,23 @@ The installed coding standards are PSR1, Squiz, MySource, PSR2, Zend, PEAR, PHPC
 
 You should, at this point, be able to `phpcs --standard=WebDevStudios` and set
 `WebDevStudios` as your standard in your favorite editors.
+
+### Editor Configuration (vim)
+
+There are several `phpcs` plugins for vim, this has been tested with
+[joonty/vim-phpqa](https://github.com/joonty/vim-phpqa), but instructions for your plugin of choice shouldn't be much
+different. Installation instructions can be found on the project's GitHub page.
+
+To configure the plugin to use WDS's standards, include this in your `~/.vimrc`
+
+```
+" Enable the WDS coding standards
+let g:phpqa_codesniffer_args = "--standard=WebDevStudios -s"
+
+" Optionally disable the mess detector if you only want sniffing. MD isn't a bad idea, though.
+let g:phpqa_messdetector_autorun = 0
+let g:phpqa_codesniffer_autorun = 1
+```
 
 ## ESLint (JavaScript Linting)
 
