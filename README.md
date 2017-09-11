@@ -102,6 +102,80 @@ Open up your settings panel and search for eslint, or navigate to the following:
 Now set the configuration file to the file in `WebDevStudios/eslintrc.js`
 ____________________
 
+## SassLint (SCSS Linting)
+
+Sass Lint will inspect Sass partials, and alert you if code fails both WordPress and WDS code standards.
+
+1) To install, run the following NPM command:
+
+	`npm install -g sass-lint`
+
+2) Add SassLint to your PATH.
+
+	`PATH=${PATH}:/usr/local/bin/sass-lint`
+
+By default, code editors and IDE's will look at your project root and scan up the directory tree, looking for `.sass-lint.yml`. If cannot find one, it will fall back to your `/User/` directory.
+
+## VS Code
+1) Install Sass Lint (by glen-84) extension
+
+	![sass-lint](https://dl.dropbox.com/s/34fwkm7qnosgb0y/Screenshot%202017-09-11%2015.01.56.png?dl=0)
+
+2) Open Settings, set the path to the WDS ruleset, in your config:
+
+	` "sasslint.configFile": "/Users/path/to/WebDevStudios/.sass-lint.yml",`
+
+## SublimeText
+
+1) Install [SublimeLinter-contrib-sass-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint) using Package Control.
+
+2) Next, set the path to the the WDS ruleset, in your config:
+
+	`Preferences --> Package Settings --> SublimeLinter --> Settings - User`
+
+	``` json
+	"linters": {
+		"sass": {
+			"@disable": false,
+			"args": [
+				"--config=/Users/path/to/WebDevStudios/.sass-lint.yml"
+			],
+			"excludes": []
+		},
+	},
+	```
+
+## Atom
+Install Linter Sass-Lint via APM:
+
+1) `apm install linter linter-sass-lint`
+
+2) Go to "Settings --> Packages --> Linter Sass Lint"
+
+3)  Set the path to the the WDS ruleset, in your config:
+
+	![screenshot](https://dl.dropbox.com/s/43det5jbb51ta93/Screenshot%202017-09-11%2016.00.07.png?dl=0)
+
+## phpStorm
+
+1) Click on the “Configure” cog and select “Plugins.”
+
+	![screenshot](https://webdevstudios.com/wp-content/uploads/2017/04/phpstorm-sass-lint-step-1.png)
+
+2) Search for “sass.” Select “SassLint” and click “Install.” Close the dialog box.
+
+	![screenshot](https://webdevstudios.com/wp-content/uploads/2017/04/phpstorm-sass-lint-step-3.png)
+
+3) Click on the “Configure” cog and select “Preferences.”
+
+4) Navigate to “Other Settings –> Sass Lint.” Check the “Enable” box.
+
+5) Place your mouse cursor in the “Node interpreter” and phpStorm should auto populate. Select "Use specific config file"
+
+	![screenshot](https://webdevstudios.com/wp-content/uploads/2017/04/phpstorm-eslint-step-3.png)
+
+	6) Set the path to the `.sass-lint.yml` file.
+
 # Changelog
 
 ## 1.1
