@@ -1,0 +1,11 @@
+{
+    "name": "webdevstudios/wds-coding-standards",
+    "description": "In-house linting and coding standards for WebDevStudios",
+    "type": "library",
+    "minimum-stability": "stable",
+    "authors": [],
+    "require-dev": {
+        "wp-coding-standards/wpcs": "0.13.1",
+        "squizlabs/php_codesniffer": "3.1.0"
+    }
+}
