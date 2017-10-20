@@ -17,3 +17,5 @@ Changes that introduce new rules require at least 5 votes/blessings. Two of them
 must be from a lead. Once a new rule has these 5 votes, add the `Approved Rule`
 label and it can be merged in immediately if it's been tested in the above
 editors.
+
+Please add a 👍 or 💯 in a comment if you would like to issue your vote.
