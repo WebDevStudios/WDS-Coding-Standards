@@ -8,6 +8,11 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 _______________________
 
+# Changelog
+
+1.1
+* Add vim configuration section to `README.md`
+
 # Installation
 
 * Clone the repo to your desired location
@@ -51,6 +56,72 @@ The installed coding standards are PSR1, Squiz, MySource, PSR2, Zend, PEAR, PHPC
 You should, at this point, be able to `phpcs --standard=WebDevStudios` and set
 `WebDevStudios` as your standard in your favorite editors.
 
+### Editor Configuration (vim)
+
+There are several `phpcs` plugins for vim, this has been tested with
+[joonty/vim-phpqa](https://github.com/joonty/vim-phpqa), but instructions for your plugin of choice shouldn't be much
+different. Installation instructions can be found on the project's GitHub page.
+
+To configure the plugin to use WDS's standards, include this in your `~/.vimrc`
+
+```
+" Enable the WDS coding standards
+let g:phpqa_codesniffer_args = "--standard=WebDevStudios -s"
+
+" Optionally disable the mess detector if you only want sniffing. MD isn't a bad idea, though.
+let g:phpqa_messdetector_autorun = 0
+let g:phpqa_codesniffer_autorun = 1
+```
+
+## ESLint (JavaScript Linting)
+
+ESLint does not have a _default_ configuration file option, so when running `eslint` you need to
+specify the config file located in this repo, `eslintrc.js`, e.g.
+
+`eslint --config=~/path/to/WDS-Coding-Standards/WebDevStudios/eslintrc.js file.js`
+
+Also if you are running eslint globally you need to install `eslint-config-wordpress` globally:
+
+`npm install -g eslint-config-wordpress`
+
+_You may need to disable your old jshint package._
+
+### Sublime
+
+The [SublimeLinter-contrib-eslint](https://github.com/roadhump/SublimeLinter-eslint) package
+can be configured to use our eslint config file by default using the settings for `eslint` below:
+
+``` json
+"linters": {
+	"eslint": {
+		"@disable": false,
+		"args": [
+			"--config=/Users/path/to/WebDevStudios/eslintrc.js",
+			"--no-eslintrc"
+		],
+		"excludes": []
+	},
+},
+```
+
+### Atom
+
+Once you get `linter-eslint` installed, you can tell it to use our custom ruleset using:
+
+![](https://cloudup.com/cq9nwuickFr+?r.png)
+
+You may have to enable this option:
+
+![](https://cloudup.com/c_vUkLklUQE+?r.png)
+
+### PHPStorm
+Setting the eslint file in PHPStorm is easy, but you must have node and the ESLint package installed.
+Open up your settings panel and search for eslint, or navigate to the following:
+* `Languages & Frameworks > JavScript > Code Quality Tools > ESLint`
+
+![](https://i.gyazo.com/26b54154c5643476cb5164e2147c860f.png)
+
+Now set the configuration file to the file in `WebDevStudios/eslintrc.js`
 ## ESLint (JavaScript Linting)
 
 ESLint does not have a _default_ configuration file option, so when running `eslint` you need to
