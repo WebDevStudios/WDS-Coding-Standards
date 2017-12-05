@@ -18,4 +18,10 @@ must be from a lead. Once a new rule has these 5 votes, add the `Approved Rule`
 label and it can be merged in immediately if it's been tested in the above
 editors.
 
-Please add a 👍 or 💯 in a comment if you would like to issue your vote.
+## How to vote
+
+Voting is as simple as going to [Pull Requests](https://github.com/WebDevStudios/WDS-Coding-Standards/pulls) and filtering for PRs that ["Needs Votes"](https://github.com/WebDevStudios/WDS-Coding-Standards/pulls?q=is%3Aopen+is%3Apr+label%3A%22Needs+Votes%22)
+
+Then scroll to the bottom of the conversation and give a 👍 or 👎. If you're giving a dissenting vote, please explain why you do not approve of this change so that we can fix it or at least come to a consensus that this does not meet WebDevStudio's standards of excellence.
+
+![wds-coding-standards-voting](https://user-images.githubusercontent.com/630830/31842232-ac59d226-b5b2-11e7-882c-bcff69fdcc31.gif)
