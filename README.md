@@ -18,8 +18,6 @@ _______________________
 
 # Changelog
 
-Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregrickaby](https://github.com/gregrickaby) [@JayWood](https://github.com/JayWood) [@phatsk](https://github.com/phatsk)
-
 ## 1.1
 
 - `@return` and `@since` rules are in place [#27](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/27)
@@ -28,6 +26,9 @@ Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregric
 - Eslinting added #22 [#29](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/29)
 - How to vote is clearer in [CONTRIBUTING.md](CONTRIBUTING.md) [#32](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/32)
 - Sass linting added [#26](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/26)
+
+This release brings most of WDS up to par with our currently-established coding standards, of which have been missing from our linting
+thus-far. Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregrickaby](https://github.com/gregrickaby) [@JayWood](https://github.com/JayWood) [@phatsk](https://github.com/phatsk).
 
 ## 1.0.1
 
