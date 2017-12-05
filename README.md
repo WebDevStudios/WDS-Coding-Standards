@@ -12,3 +12,13 @@ Simply grab a cup of ☕&nbsp; and follow directions [here](https://github.com/W
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+___________________
+
+# Rules
+
+See these files for information (in doc-blocks) about any rules we've adopted.
+
+- [@since](WebDevStudios/Sniffs/All/RequireSinceSniff.php)
+- [@return](WebDevStudios/Sniffs/All/RequireReturnSniff.php)
+- [JS Rules](WebDevStudios/.eslintrc.js)
+- [Sass Rules](WebDevStudios/.sass-lint.yml)
