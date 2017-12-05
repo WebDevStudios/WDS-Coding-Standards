@@ -1,10 +1,10 @@
-# WDS-Coding-Standards
+# WebDevStudios Coding Standards
 
-A repository to house WDS linting and coding standards.
+A repository to house WebDevStudios in-house linting and coding standards.
 
 _________________________
 
-## Want to Contribute?
+# Want to Contribute?
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -17,6 +17,8 @@ Follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/w
 _______________________
 
 # Changelog
+
+Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregrickaby](https://github.com/gregrickaby) [@JayWood](https://github.com/JayWood) [] [@phatsk](https://github.com/phatsk)
 
 ## 1.1
 
@@ -36,4 +38,3 @@ you will need to update your coding standard to `WebDevStudios` vs the old
 ## 1.0
 
 - Initial ruleset based on WordPress-Extra
-
