@@ -6,7 +6,7 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
 
 ## How to Install
 
-Simply grab a cup of ☕ and follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation).
+Simply grab a cup of ☕&nbsp;and follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation).
 
 ## Want to Contribute?
 
