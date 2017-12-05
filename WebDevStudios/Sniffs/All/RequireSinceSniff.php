@@ -9,6 +9,7 @@
  */
 
 namespace WebDevStudios\Sniffs\All;
+
 use PHP_CodeSniffer_Sniff;
 use PHP_CodeSniffer_File;
 
