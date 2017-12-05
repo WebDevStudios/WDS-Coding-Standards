@@ -26,20 +26,4 @@
 	<rule ref="Squiz.PHP.DisallowMultipleAssignments.Found">
 		<severity>0</severity>
 	</rule>
-
-	<!--
-		Load all the rules.
-
-		Since we want all rules to extend the BaseSniff class,
-		we load all rules from one directory:
-
-			./All
-
-		We will first load ./All/BaseSniff.php as a base class.
-		Then we will load ./All/*.php of other rules that extend the BaseSniff class.
-
-		There is no need to add any of the other rules here as long as they
-		extend the BaseSniff class.
-	-->
-	<rule ref="WebDevStudios.All.Base" />
 </ruleset>
