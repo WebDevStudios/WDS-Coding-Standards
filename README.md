@@ -18,7 +18,7 @@ _______________________
 
 # Changelog
 
-Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregrickaby](https://github.com/gregrickaby) [@JayWood](https://github.com/JayWood) [] [@phatsk](https://github.com/phatsk)
+Props for this release go to [@aubreypwd](http://github.com/aubreypwd) [@gregrickaby](https://github.com/gregrickaby) [@JayWood](https://github.com/JayWood) [@phatsk](https://github.com/phatsk)
 
 ## 1.1
 
