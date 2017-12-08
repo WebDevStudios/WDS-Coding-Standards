@@ -1,0 +1,10 @@
+{
+    "name": "webdevstudios/wds-coding-standards",
+    "description": "In-house linting and coding standards for WebDevStudios",
+    "type": "library",
+    "minimum-stability": "stable",
+    "authors": [],
+    "require": {
+        "wp-coding-standards/wpcs": "0.14.0"
+    }
+}
