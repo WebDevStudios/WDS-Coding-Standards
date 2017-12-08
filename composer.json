@@ -5,7 +5,6 @@
     "minimum-stability": "stable",
     "authors": [],
     "require": {
-        "wp-coding-standards/wpcs": "0.13.1",
-        "squizlabs/php_codesniffer": "3.1.0"
+        "wp-coding-standards/wpcs": "0.14.0"
     }
 }
