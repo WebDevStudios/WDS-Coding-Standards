@@ -98,7 +98,7 @@ class RequireSinceSniff extends BaseSniff {
 		}
 
 		if ( ! $have_an_at_since_tag ) {
-			$this->warn( $file, $doc_block_end, "Documenting the version this was introduced is recommended. If you aren't using any official versioning standard, consider using the date, e.g. %s." );
+			$this->warn( $file, $doc_block_end, sprintf( "Documenting the version this was introduced is recommended. If you aren't using any official versioning standard, consider using the date, e.g.: %s.", date( 'F j, Y' ) ) );
 		}
 	}
 }
