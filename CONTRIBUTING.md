@@ -11,6 +11,12 @@ When adding __any__ changes, each change must go through the following PR proces
 - Once the PR has been tested in all editors, a complete review from a Senior Developer and a Lead is required (Add the `Lead/Senior Review Needed` label so we can notice those, remove this label when the two reviews are done)
 - Once your PR has the correct number of votes, and is fully reviewed, it can only be merged into `master` by a lead (add the `Ready For Lead Merge` label when it's ready for this, or the lead can just merge it right in)
 
+# Upstream Updates
+
+When an update is made to the [WordPress-Coding-Standard](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/releases), it needs to be reviewed by WDS and then if approved, included in our [composer.json](https://github.com/WebDevStudios/WDS-Coding-Standards/blob/master/composer.json) file, and then a new release tagged.
+
+Once a new release is tagged, all WDS developers need to update their local WDS-Coding-Standards per the [composer installation instructions](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation#composer).
+
 # Additional Approval of New Rules
 
 Changes that introduce new rules require at least 5 votes/blessings. Two of them
