@@ -65,10 +65,15 @@ class RequireSinceSniff extends BaseSniff {
 	 * @param  int                  $doc_block_start Where the docblock starts.
 	 *
 	 * @since 1.1.0
+	 *
+	 * @since 1.1.1 Don't warn about @since about anything in themes.
+	 * @see         https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit Documentation of this requirement.
+	 *
+	 * @return void Early bail if a WordPress theme.
 	 */
 	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
-		$this->tokens = $file->getTokens();
-		$token = $this->tokens[ $doc_block_start ];
+		$this->tokens  = $file->getTokens();
+		$token         = $this->tokens[ $doc_block_start ];
 		$doc_block_end = $token['comment_closer'];
 
 		// The @return in the comment block, false by default.
@@ -82,8 +87,18 @@ class RequireSinceSniff extends BaseSniff {
 			}
 		}
 
+		/**
+		 * Don't warn on theme files at all.
+		 *
+		 * @since 1.1.1
+		 * @see   https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit Documentation of this requirement.
+		 */
+		if ( stristr( $file->getFilename(), 'wp-content/themes/' ) ) {
+			return;
+		}
+
 		if ( ! $have_an_at_since_tag ) {
-			$this->error( $file, $doc_block_end, 'Please document the version this was introduced using an @since tag.' );
+			$this->warn( $file, $doc_block_end, "Documenting the version this was introduced is recommended. If you aren't using any official versioning standard, consider using the date, e.g. %s." );
 		}
 	}
 }
