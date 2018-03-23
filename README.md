@@ -29,6 +29,7 @@ ___________________
 
 ## 1.1.1
 
+- WDSCS now requires WPCS 0.14.1 #34; props @jrfoell
 - `@since` is now a warning #39
 - `@since` will not show a warning for files in `wp-content/themes/**` #39
 
