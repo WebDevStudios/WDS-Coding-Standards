@@ -33,7 +33,7 @@ module.exports = {
 	 *
 	 * @@since 1.1
 	 */
-	'extends': 'wordpress',
+	extends: ['wordpress','prettier'],
 
 	/**
 	 * WDS & WordPress Coding Standards for JavaScript.
