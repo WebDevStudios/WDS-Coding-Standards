@@ -1,8 +1,8 @@
-<img src="https://wpengine.com/wp-content/uploads/2015/11/Web-Dev-Studios-Logo.png" width="200" alt="WebDevStudios Logo" align="right" />
-
 # WebDevStudios Coding Standards
 
 WebDevStudios in-house linting and coding standards for your favorite editor.
+
+<a href="https://webdevstudios.com/contact/"><img src="https://webdevstudios.com/wp-content/uploads/2018/04/wds-github-banner.png" alt="WebDevStudios. WordPress for big brands."></a>
 
 ## How to Install
 
