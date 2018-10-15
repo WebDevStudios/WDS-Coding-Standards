@@ -59,36 +59,54 @@ class RequireAuthorSniff extends BaseSniff {
 	/**
 	 * Process file.
 	 *
-	 * @param  PHP_CodeSniffer_File $file            The file object.
-	 * @param  int                  $doc_block_start Where the docblock starts.
+	 * @param  PHP_CodeSniffer_File $file  The file object.
+	 * @param  int                  $start Where the docblock starts.
 	 *
-	 * @since 1.2.0
+	 * @since                              1.2.0
+	 * @return void                        Early bail if we don't enforce this on the docblock.
 	 */
-	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
-		$this->tokens  = $file->getTokens();
-		$token         = $this->tokens[ $doc_block_start ];
-		$doc_block_end = $token['comment_closer'];
+	public function process( PHP_CodeSniffer_File $file, $start ) {
 
-		error_log( print_r( (object) array(
-			'line' => __LINE__,
-			'file' => __FILE__,
-			'dump' => array(
-				$token,
-			),
-		), true ) );
+		// Get the tokens.
+		$this->tokens = $file->getTokens();
 
-		// The @author in the comment block, false by default.
-		$have_an_at_since_tag = false;
-		for ( $i = $doc_block_start; $i <= $doc_block_end; $i++ ) {
-			if ( stristr( $this->tokens[ $i ]['content'], '@author' ) ) {
+		// Get this token.
+		$token = $this->get_token( $start );
 
-				// We found an @author in the block.
-				$have_an_at_since_tag = $this->tokens[ $i ];
+		// Where does the docblock end for this token.
+		$end_position = $this->get_comment_token_closer_position( $token );
+
+		// Enforce on passing of any of these tests.
+		$enforce = in_array( true, array(
+
+			// If the next line is a e.g. function() {...
+			$this->next_line_is_token_type( $file, T_FUNCTION, 'T_FUNCTION', $end_position )
+		) );
+
+		// We're enforcing this...
+		if ( $enforce ) {
+
+			// The @author in the comment block, false by default.
+			$has_author_tag = false;
+
+			// Find (in the docblock) if there is an @author.
+			for ( $i = $start; $i <= $end_position; $i++ ) {
+
+				// Get the content of the token.
+				$content = $this->get_token_content( $this->get_token( $i ) );
+				if ( stristr( $content, '@author' ) ) {
+
+					// We found an @author in the block.
+					$has_author_tag = true;
+				}
 			}
-		}
 
-		if ( ! $have_an_at_since_tag ) {
-			$this->error( $file, $doc_block_end, 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.' );
-		}
+			if ( ! $has_author_tag ) {
+
+				// We didn't find @author, let them know.
+				$this->warn( $file, $end_position, 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.' );
+			}
+
+		} // enforce.
 	}
 }
