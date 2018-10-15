@@ -27,6 +27,10 @@ ___________________
 
 # Changelog
 
+## 1.2
+
+- WordPress Coding Standards update to v1.1.0 #50 #46
+
 ## 1.1.1
 
 - WDSCS now requires WPCS 0.14.1 #34; props @jrfoell
