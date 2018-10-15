@@ -110,7 +110,7 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @since  1.1.0
 	 *
 	 * @param int    $position The position of the token.
-	 * @param string $key      The key you want from the array daya, leave empty to get all data.
+	 * @param string $key      The key you want from the array data, leave empty to get all data.
 	 *
 	 * @return mixed An array of data if you request all information, any type given the key may be any type in the array.
 	 */
@@ -120,6 +120,32 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 		}
 
 		return $this->tokens[ $position ];
+	}
+
+	/**
+	 * Get the position the token's content ends.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  array $token  Token.
+	 * @return int           The position.
+	 */
+	protected function get_closer_token_position( $token ) {
+		return isset( $token['comment_closer'] ) ? $token['comment_closer'] : 0;
+	}
+
+	/**
+	 * Get a token's content.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  array $token  Token.
+	 * @return string        The content.
+	 */
+	protected function get_token_content( $token ) {
+		return isset( $token['content'] ) ? $token['content'] : '';
 	}
 
 	/**

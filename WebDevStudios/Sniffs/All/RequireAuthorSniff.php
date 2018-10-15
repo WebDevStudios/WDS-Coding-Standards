@@ -65,30 +65,25 @@ class RequireAuthorSniff extends BaseSniff {
 	 * @since 1.2.0
 	 */
 	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
-		$this->tokens  = $file->getTokens();
-		$token         = $this->tokens[ $doc_block_start ];
-		$doc_block_end = $token['comment_closer'];
-
-		error_log( print_r( (object) array(
-			'line' => __LINE__,
-			'file' => __FILE__,
-			'dump' => array(
-				$token,
-			),
-		), true ) );
+		$this->tokens = $file->getTokens();
+		$start_token  = $this->get_token( $doc_block_start );
+		$end          = $this->get_closer_token_position( $start_token );
 
 		// The @author in the comment block, false by default.
-		$have_an_at_since_tag = false;
-		for ( $i = $doc_block_start; $i <= $doc_block_end; $i++ ) {
-			if ( stristr( $this->tokens[ $i ]['content'], '@author' ) ) {
+		$has_author_tag = false;
+		for ( $i = $doc_block_start; $i <= $end; $i++ ) {
+
+			// Get the content of the token.
+			$content = $this->get_token_content( $this->get_token( $i ) );
+			if ( stristr( $content, '@author' ) ) {
 
 				// We found an @author in the block.
-				$have_an_at_since_tag = $this->tokens[ $i ];
+				$has_author_tag = true;
 			}
 		}
 
-		if ( ! $have_an_at_since_tag ) {
-			$this->error( $file, $doc_block_end, 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.' );
+		if ( ! $has_author_tag ) {
+			$this->error( $file, $end, 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.' );
 		}
 	}
 }
