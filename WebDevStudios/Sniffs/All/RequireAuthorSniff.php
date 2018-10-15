@@ -69,6 +69,14 @@ class RequireAuthorSniff extends BaseSniff {
 		$token         = $this->tokens[ $doc_block_start ];
 		$doc_block_end = $token['comment_closer'];
 
+		error_log( print_r( (object) array(
+			'line' => __LINE__,
+			'file' => __FILE__,
+			'dump' => array(
+				$token,
+			),
+		), true ) );
+
 		// The @author in the comment block, false by default.
 		$have_an_at_since_tag = false;
 		for ( $i = $doc_block_start; $i <= $doc_block_end; $i++ ) {
