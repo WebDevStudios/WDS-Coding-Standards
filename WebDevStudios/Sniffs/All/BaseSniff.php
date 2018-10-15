@@ -159,6 +159,8 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @param boolean              $local      Whether to go past $end and search again.
 	 *
 	 * @return boolean|mixed False if the token type did not validate, the value of findNext else.
+	 *
+	 * @see  https://pear.php.net/package/PHP_CodeSniffer/docs/3.2.3/apidoc/PHP_CodeSniffer/File.html#methodfindNext
 	 */
 	protected function find_next( $file, $token_type, $validate = null, $start, $end = null, $local = false ) {
 
