@@ -214,7 +214,7 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @param  int    $line The line.
 	 * @return string       The contents.
 	 */
-	public function get_line_content( $file, $line ) {
+	protected function get_line_content( $file, $line ) {
 
 		// The filename of the file.
 		$filename = $file->getFilename();
@@ -238,7 +238,7 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @param  int    $position The position of the token.
 	 * @return bool             True if it does, false if not.
 	 */
-	public function next_line_has( $file, $text, $position ) {
+	protected function next_line_has( $file, $text, $position ) {
 		$token = $this->get_token( $position );
 
 		foreach ( $this->tokens as $t ) {
