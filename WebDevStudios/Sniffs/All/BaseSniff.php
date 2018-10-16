@@ -187,17 +187,67 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @param  PHP_CodeSniffer_File $file File.
 	 * @param  int $token_type The        Token Type Code.
 	 * @param  string $token_name         The token name e.g. T_FUNCTION for validation.
-	 * @param  int $line                  The line of the current token.
+	 * @param  int $position              The position of the current token.
 	 * @return boolean                    True if, on the next line, that token type is found.
 	 */
-	protected function next_line_is_token_type( $file, $token_type, $token_name, $line ) {
-		$token    = $this->get_token( $line );
-		$function = $this->find_next( $file, $token_type, $token_name, $line );
+	protected function next_line_is_token_type( $file, $token_type, $token_name, $position ) {
+		$token    = $this->get_token( $position );
+		$function = $this->find_next( $file, $token_type, $token_name, $position );
 
 		if ( $function ) {
 			$function = $this->get_token( $function );
 			if ( $function['line'] === $token['line'] + 1 ) {
 				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the contents of a line.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  object $file File object from PHPCS.
+	 * @param  int    $line The line.
+	 * @return string       The contents.
+	 */
+	public function get_line_content( $file, $line ) {
+
+		// The filename of the file.
+		$filename = $file->getFilename();
+
+		// Seek to the line.
+		$spl = new \SplFileObject( $filename );
+		$spl->seek( $line - 1 ); // Zero-based.
+
+		// Get the content.
+		return $spl->current();
+	}
+
+	/**
+	 * Does the next line have content.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  object $file     The file object from PHPCS.
+	 * @param  string $text     The string to search for on that line.
+	 * @param  int    $position The position of the token.
+	 * @return bool             True if it does, false if not.
+	 */
+	public function next_line_has( $file, $text, $position ) {
+		$token = $this->get_token( $position );
+
+		foreach ( $this->tokens as $t ) {
+			if ( $token['line'] + 1 === $t['line'] ) {
+				$content = $this->get_line_content( $file, $t['line'] );
+
+				if ( stristr( $content, $text ) ) {
+					return true;
+				}
 			}
 		}
 

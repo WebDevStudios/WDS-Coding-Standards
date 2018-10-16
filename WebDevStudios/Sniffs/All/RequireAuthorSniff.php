@@ -81,6 +81,12 @@ class RequireAuthorSniff extends BaseSniff {
 
 			// If the next line is a e.g. function() {...
 			$this->next_line_is_token_type( $file, T_FUNCTION, 'T_FUNCTION', $end_position ),
+
+			// On apply_filters.
+			$this->next_line_has( $file, '= apply_filters(', $end_position ),
+
+			// On do_action.
+			$this->next_line_has( $file, '= do_action(', $end_position ),
 		) );
 
 		// We're enforcing this...
