@@ -83,10 +83,16 @@ class RequireAuthorSniff extends BaseSniff {
 			$this->next_line_is_token_type( $file, T_FUNCTION, 'T_FUNCTION', $end_position ),
 
 			// On apply_filters.
-			$this->next_line_has( $file, '= apply_filters(', $end_position ),
+			$this->next_line_has( $file, '= apply_filters(', $end_position )
+
+				// But not commented out.
+				&& ! $this->next_line_is_token_type( $file, T_COMMENT, 'T_COMMENT', $end_position ),
 
 			// On do_action.
-			$this->next_line_has( $file, '= do_action(', $end_position ),
+			$this->next_line_has( $file, '= do_action(', $end_position )
+
+				// But not commented out.
+				&& ! $this->next_line_is_token_type( $file, T_COMMENT, 'T_COMMENT', $end_position ),
 		) );
 
 		// We're enforcing this...
