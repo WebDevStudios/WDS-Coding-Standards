@@ -80,7 +80,7 @@ class RequireAuthorSniff extends BaseSniff {
 		$enforce = in_array( true, array(
 
 			// If the next line is a e.g. function() {...
-			$this->next_line_is_token_type( $file, T_FUNCTION, 'T_FUNCTION', $end_position )
+			$this->next_line_is_token_type( $file, T_FUNCTION, 'T_FUNCTION', $end_position ),
 		) );
 
 		// We're enforcing this...
