@@ -4,6 +4,15 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
 
 <a href="https://webdevstudios.com/contact/"><img src="https://webdevstudios.com/wp-content/uploads/2018/04/wds-github-banner.png" alt="WebDevStudios. WordPress for big brands."></a>
 
+## Leadership
+
+- @aubreypwd (Senior Developer)
+    + Writes & Integrates coding Standards/Maintains standards
+- @gregrickaby (Director of Engineering)
+    + High level Approval / Leadership
+- @jrfoells (Senior Developer)
+    + Future "Journeyman"
+
 ## How to Install
 
 Simply grab a cup of ☕&nbsp; and follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation).
