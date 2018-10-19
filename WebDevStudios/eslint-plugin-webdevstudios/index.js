@@ -84,25 +84,31 @@ var wdscs = ( function( wdscs ) {
 		return -1;
 	};
 
-	wdscs.docBlockRequireTagOn = function( context, node, tag, type ) {
+	wdscs.docBlockRequireTag = function( context, node, tag ) {
+
+		// Get the node of the associated docblock.
+		var docBlockNode = context.getJSDocComment( node );
+
+		// We have a docblock.
+		if ( docBlockNode ) {
+
+			// Warn about missing @author tag.
+			if ( false === wdscs.docBlockContentHasTag( tag, wdscs.getNodeContent( docBlockNode ) ) ) {
+
+				// Report the message for that tag.
+				context.report( docBlockNode, wdscs.messages.requiredTags[ tag ] );
+			}
+		}
+	};
+
+	wdscs.docBlockRequireTagOnType = function( context, node, tag, type ) {
 		if ( context.getJSDocComment( node ) ) {
 
-			// If e.g. a function something() {...
+			// If e.g. * or FunctionDeclaration, etc...
 			if ( type === node.type ) {
 
-				// Get the node of the associated docblock.
-				var docBlockNode = context.getJSDocComment( node );
-
-				// We have a docblock.
-				if ( docBlockNode ) {
-
-					// Warn about missing @author tag.
-					if ( false === wdscs.docBlockContentHasTag( tag, wdscs.getNodeContent( docBlockNode ) ) ) {
-
-						// Report the message for that tag.
-						context.report( docBlockNode, wdscs.messages.requiredTags[ tag ] );
-					}
-				}
+				// Require the tag on this thing.
+				wdscs.docBlockRequireTag( context, node, tag );
 			}
 		}
 	};
@@ -110,7 +116,8 @@ var wdscs = ( function( wdscs ) {
 	// Messages (so we can re-use them).
 	wdscs.messages = {
 		requiredTags: {
-			'@author': 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.'
+			'@author': 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.',
+			'@since': 'Documenting the version this was introduced is recommended. If you aren\'t using any official versioning standard, consider using the date, e.g.: Friday, October 19, 2018.'
 		}
 	};
 
@@ -119,13 +126,42 @@ var wdscs = ( function( wdscs ) {
 
 module.exports = {
 	'rules': {
-		'required-tags': {
+
+		/**
+		 * @author
+		 *
+		 * As in PHPCS, @author is helpful.
+		 *
+		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since  2.2.0
+		 */
+		'@author': {
 			create: function( context ) {
 				return {
 
 					// On every node in the document.
 					'*': function( node ) {
-						wdscs.docBlockRequireTagOn( context, node, '@author', 'FunctionDeclaration' );
+						wdscs.docBlockRequireTagOnType( context, node, '@since', 'FunctionDeclaration' );
+					}
+				};
+			}
+		},
+
+		/*
+		 * @since
+		 *
+		 * As in PHPCS, @since is required on all docblocks.
+		 *
+		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since 2.2.0
+		 */
+		'@since': {
+			create: function( context ) {
+				return {
+
+					// On every node in the document.
+					'*': function( node ) {
+						wdscs.docBlockRequireTag( context, node, '@since' );
 					}
 				};
 			}

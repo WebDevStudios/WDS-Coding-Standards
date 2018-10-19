@@ -64,7 +64,9 @@ module.exports = {
 		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
 		 * @since     1.2.0
 		 */
-		'webdevstudios/required-tags': 1,
+		'webdevstudios/@author': 1,
+
+		'webdevstudios/@since': 2,
 
 		/**
 		 * Enforce spacing inside array brackets.
