@@ -29,8 +29,18 @@ ___________________
 ## NEXT
 
 - WordPress Coding Standards update to v1.1.0 #50 #46
-- Docblocks are required on function assignments in JS
-- `@author` is suggested in docblocks in both PHP & JS
+- Docblocks are required on function assignments in JS (see release notes)
+- `@author` is suggested in docblocks in both PHP & JS (see release notes)
+
+### Release Notes
+
+This installation requires you to do an additional step:
+
+```bash
+npm install -g /path/to/WebDevStudios/eslint-plugin-webdevstudios
+```
+
+This will install the additional ES Lint rules we've added via `eslint-plugin-webdevstudios/*` which are now going to be required to have custom ES Lint rules.
 
 ## 1.1.1
 
