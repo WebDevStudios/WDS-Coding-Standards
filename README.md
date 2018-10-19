@@ -28,12 +28,9 @@ ___________________
 
 ## NEXT
 
+- WordPress Coding Standards update to v1.1.0 #50 #46
 - Docblocks are required on function assignments in JS
 - `@author` is suggested in docblocks in both PHP & JS
-
-## 1.2
-
-- WordPress Coding Standards update to v1.1.0 #50 #46
 
 ## 1.1.1
 
