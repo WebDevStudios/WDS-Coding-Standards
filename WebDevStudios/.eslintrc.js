@@ -67,6 +67,7 @@ module.exports = {
 		'webdevstudios/@author': 1,
 
 		'webdevstudios/@since': 2,
+		'webdevstudios/functionExpressionRequireDocblock': 2,
 
 		/**
 		 * Enforce spacing inside array brackets.

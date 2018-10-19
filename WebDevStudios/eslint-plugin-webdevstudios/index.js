@@ -7,10 +7,6 @@
  */
 
 /* globals module */
-
-/**
- * Custom functions.
- */
 var wdscs = ( function( wdscs ) {
 
 	/**
@@ -66,6 +62,15 @@ var wdscs = ( function( wdscs ) {
 		return -1;
 	};
 
+	/**
+	 * Is a node a file docblock?
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.2.0
+	 *
+	 * @param  {Object} node Node Object.
+	 * @return {Mixed}       True if it is, false if not, -1 if not a docblock.
+	 */
 	wdscs.docBlockIsFileDocBlock = function( node ) {
 		if ( wdscs.isDocblock( wdscs.getNodeContent( node ) ) ) {
 
@@ -84,6 +89,16 @@ var wdscs = ( function( wdscs ) {
 		return -1;
 	};
 
+	/**
+	 * Require a docblock on node.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.2.0
+	 *
+	 * @param  {Object} context Context Object.
+	 * @param  {Object} node    Node Object.
+	 * @param  {string} tag     The tag, e.g. @since, @author.
+	 */
 	wdscs.docBlockRequireTag = function( context, node, tag ) {
 
 		// Get the node of the associated docblock.
@@ -101,6 +116,17 @@ var wdscs = ( function( wdscs ) {
 		}
 	};
 
+	/**
+	 * Require a docblock tag on node type.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  2.2.0
+	 *
+	 * @param  {Object} context Context Object.
+	 * @param  {Object} node    Node Object.
+	 * @param  {string} tag     The tag, e.g. @since, @author.
+	 * @param  {String} type    The type, e.g. FunctionExpression or *.
+	 */
 	wdscs.docBlockRequireTagOnType = function( context, node, tag, type ) {
 		if ( context.getJSDocComment( node ) ) {
 
@@ -124,8 +150,74 @@ var wdscs = ( function( wdscs ) {
 	return wdscs;
 } ( {} ) );
 
+/**
+ * @see  https://eslint.org/docs/developer-guide/selectors
+ */
 module.exports = {
 	'rules': {
+
+		/**
+		 * Require function expressions to need docblock.
+		 *
+		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since  2.2.0
+		 */
+		'functionExpressionRequireDocblock': {
+
+			/**
+			 * Rule Handler.
+			 *
+			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+			 * @since  2.2.0
+			 *
+			 * @param  {Object} context Context handler.
+			 * @return {Object}         Handler object.
+			 */
+			create: function( context ) {
+				return {
+
+					/**
+					 * FunctionExpression Handler.
+					 *
+					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+					 * @since  2.2.0
+					 *
+					 * @param  {Object} node Node Object.
+					 */
+					'FunctionExpression': function( node ) {
+						if ( 'CallExpression' === node.parent.type ) {
+
+							// Don't run this on ife's or anonymous functions because they're hard to document.s
+							return;
+						}
+
+						if (
+
+							// E.g. $thing = function( a, b ).
+							'VariableDeclarator' === node.parent.type ||
+
+							// E.g. thing.thing = function( a, b ).
+							'AssignmentExpression' === node.parent.type ||
+
+							// E.g. return function( a, b ).
+							'ReturnStatement' === node.parent.type ||
+
+							// E.g. { thing: function( a, b ) }.
+							'Property' === node.parent.type
+						) {
+
+							// See if there is a docblock.
+							var docBlockNode = context.getJSDocComment( node );
+
+							// This assignment has no docblock!
+							if ( ! docBlockNode ) {
+								context.report( node, 'Adding a docblock to function expressions is helpful to understand any data coming in.' );
+							}
+						}
+					}
+				};
+			}
+		},
 
 		/**
 		 * @author
@@ -136,12 +228,29 @@ module.exports = {
 		 * @since  2.2.0
 		 */
 		'@author': {
+
+			/**
+			 * Rule Handler.
+			 *
+			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+			 * @since  2.2.0
+			 *
+			 * @param  {Object} context Context handler.
+			 * @return {Object}         Handler object.
+			 */
 			create: function( context ) {
 				return {
 
-					// On every node in the document.
+					/**
+					 * On Every Node Handler.
+					 *
+					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+					 * @since  2.2.0
+					 *
+					 * @param  {Object} node Node Object.
+					 */
 					'*': function( node ) {
-						wdscs.docBlockRequireTagOnType( context, node, '@since', 'FunctionDeclaration' );
+						wdscs.docBlockRequireTagOnType( context, node, '@author', 'FunctionDeclaration' );
 					}
 				};
 			}
@@ -156,10 +265,27 @@ module.exports = {
 		 * @since 2.2.0
 		 */
 		'@since': {
+
+			/**
+			 * Rule Handler.
+			 *
+			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+			 * @since  2.2.0
+			 *
+			 * @param  {Object} context Context handler.
+			 * @return {Object}         Handler object.
+			 */
 			create: function( context ) {
 				return {
 
-					// On every node in the document.
+					/**
+					 * On Every Node Handler.
+					 *
+					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+					 * @since  2.2.0
+					 *
+					 * @param  {Object} node Node Object.
+					 */
 					'*': function( node ) {
 						wdscs.docBlockRequireTag( context, node, '@since' );
 					}
