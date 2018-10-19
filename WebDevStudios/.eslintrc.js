@@ -2,7 +2,13 @@
 
 /* globals module */
 module.exports = {
-	'plugins': [],
+	'plugins': [
+
+		/**
+		 * Make sure you run npm install -g /path/to/WebDevStudios/eslint-rules
+		 */
+		'webdevstudios'
+	],
 	'env': {
 		'browser': true,
 		'jquery': true,
@@ -33,7 +39,7 @@ module.exports = {
 	 *
 	 * @@since 1.1
 	 */
-	'extends': 'wordpress',
+	'extends': [ 'wordpress' ],
 
 	/**
 	 * WDS & WordPress Coding Standards for JavaScript.
@@ -48,6 +54,17 @@ module.exports = {
 	 * @see    https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/
 	 */
 	'rules': {
+
+		/**
+		 * Required Tags.
+		 *
+		 * @standards WDS
+		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/5
+		 *
+		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since     1.2.0
+		 */
+		'webdevstudios/required-tags': 1,
 
 		/**
 		 * Enforce spacing inside array brackets.
