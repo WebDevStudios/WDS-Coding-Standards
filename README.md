@@ -6,12 +6,12 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
 
 ## Leadership
 
-- @aubreypwd (Senior Developer)
-    + Writes & Integrates coding Standards/Maintains standards
-- @gregrickaby (Director of Engineering)
+- __Aubrey Portwood (Senior BED Developer)__
+    + Writes & Integrates Coding Standards/Maintains Standards
+- __Greg Rickaby (Director of Engineering)__
     + High level Approval / Leadership
-- @jrfoells (Senior Developer)
-    + Future "Journeyman"
+- __Corey Collins (FED Lead)__
+    + VS Code Testing
 
 ## How to Install
 
