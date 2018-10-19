@@ -14,18 +14,13 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ___________________
 
-# Rules
-
-See these files for information (in doc-blocks) about any rules we've adopted.
-
-- [@since](WebDevStudios/Sniffs/All/RequireSinceSniff.php)
-- [@return](WebDevStudios/Sniffs/All/RequireReturnSniff.php)
-- [JS Rules](WebDevStudios/.eslintrc.js)
-- [Sass Rules](WebDevStudios/.sass-lint.yml)
-
-___________________
 
 # Changelog
+
+## NEXT
+
+- Docblocks are required on function assignments in JS
+- `@author` is suggested in docblocks in both PHP & JS
 
 ## 1.1.1
 

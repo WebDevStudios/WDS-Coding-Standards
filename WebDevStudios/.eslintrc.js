@@ -56,17 +56,44 @@ module.exports = {
 	'rules': {
 
 		/**
-		 * Required Tags.
+		 * Require @author.
+		 *
+		 * @standards WDS
+		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/20
+		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/5
+		 *
+		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since     NEXT
+		 *
+		 * @report    Warning
+		 */
+		'webdevstudios/@author': 1,
+
+		/**
+		 * Require @since.
 		 *
 		 * @standards WDS
 		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/5
 		 *
 		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since     1.2.0
+		 * @since     NEXT
+		 *
+		 * @report    Error
 		 */
-		'webdevstudios/@author': 1,
-
 		'webdevstudios/@since': 2,
+
+		/**
+		 * Function assignments require DocBlocks to help understand data coming in.
+		 *
+		 * Note, this does not apply to anonymous functions.
+		 *
+		 * @standards WDS
+		 *
+		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
+		 * @since     NEXT
+		 *
+		 * @report    Error
+		 */
 		'webdevstudios/functionExpressionRequireDocblock': 2,
 
 		/**
@@ -75,8 +102,10 @@ module.exports = {
 		 * @standard WDS
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'array-bracket-spacing': [ 'error', 'always' ],
 
@@ -86,8 +115,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#blocks-and-curly-braces
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'brace-style': 'error',
 
@@ -97,8 +128,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#naming-conventions
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'camelcase': [ 'error', {
 			properties: 'always'
@@ -110,8 +143,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#objects
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'comma-dangle': [ 'error', 'never' ],
 
@@ -121,8 +156,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#objects
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'comma-spacing': 'error',
 
@@ -131,8 +168,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'comma-style': [ 'error', 'last' ],
 
@@ -142,8 +181,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#objects
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'dot-notation': [ 'error', {
 			allowKeywords: true,
@@ -155,8 +196,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'eol-last': 'error',
 
@@ -166,8 +209,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   None
 		 */
 		'func-call-spacing': 'off',
 
@@ -177,8 +222,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'key-spacing': [ 'error', {
 			beforeColon: false,
@@ -191,8 +238,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'keyword-spacing': 'error',
 
@@ -201,8 +250,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'linebreak-style': [ 'error', 'unix' ],
 
@@ -211,8 +262,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'lines-around-comment': [ 'error', {
 			beforeLineComment: true
@@ -224,8 +277,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'no-mixed-spaces-and-tabs': 'error',
 
@@ -234,8 +289,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'no-multi-str': 'error',
 
@@ -244,8 +301,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'no-multiple-empty-lines': 'error',
 
@@ -254,8 +313,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'no-with': 'error',
 
@@ -264,8 +325,10 @@ module.exports = {
 		 *
 		 * @standard WDS
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'one-var-declaration-per-line': [ 'error', 'initializations' ],
 
@@ -274,8 +337,10 @@ module.exports = {
 		 *
 		 * @standard WP
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'operator-linebreak': [ 'error', 'after' ],
 
@@ -285,8 +350,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#semicolons
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'semi': [ 'error', 'always' ],
 
@@ -296,8 +363,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'space-before-blocks': [ 'error', 'always' ],
 
@@ -307,8 +376,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.0
+		 * @author   Aubrey Portwood
+		 * @since    1.0
+		 *
+		 * @report   Error
 		 */
 		'space-before-function-paren': [ 'error', 'never' ],
 
@@ -320,6 +391,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'space-in-parens': [ 'error', 'always' ],
 
@@ -329,8 +402,10 @@ module.exports = {
 		 * @standard WP
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#spacing
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.1
+		 * @author   Aubrey Portwood
+		 * @since    1.1
+		 *
+		 * @report   Error
 		 */
 		'space-infix-ops': 'error',
 
@@ -341,6 +416,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'space-unary-ops': [ 'error', {
 			overrides: { '!': true }
@@ -355,8 +432,10 @@ module.exports = {
 		 * @standard WDS
 		 * @see      https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/#declaring-variables-with-var
 		 *
-		 * @since  1.1
-		 * @author Aubrey Portwood
+		 * @since    1.1
+		 * @author   Aubrey Portwood
+		 *
+		 * @report   None
 		 */
 		'vars-on-top': 'off',
 
@@ -368,6 +447,8 @@ module.exports = {
 		 *
 		 * @since  1.0
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'yoda': [ 'error', 'always' ],
 
@@ -378,6 +459,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'no-unused-vars': 'error',
 
@@ -391,6 +474,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'no-console': 'error',
 
@@ -404,6 +489,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'no-debugger': 'error',
 
@@ -414,6 +501,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'valid-jsdoc': [ 'error', {
 
@@ -428,6 +517,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'require-jsdoc': 'error',
 
@@ -441,6 +532,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Warning
 		 */
 		'valid-typeof': 'warn',
 
@@ -451,6 +544,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'func-style': [ 'error', 'declaration' ],
 
@@ -462,6 +557,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'eqeqeq': 'error',
 
@@ -484,6 +581,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'curly': 'error',
 
@@ -494,6 +593,8 @@ module.exports = {
 		 *
 		 * @since  1.1
 		 * @author Aubrey Portwood
+		 *
+		 * @report   Error
 		 */
 		'no-eq-null': 'error',
 
@@ -509,6 +610,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'radix': 'error',
 
@@ -536,8 +639,10 @@ module.exports = {
 		 *         return jQuery( '#id' );
 		 *     }
 		 *
-		 * @author Aubrey Portwood
-		 * @since 1.1
+		 * @author   Aubrey Portwood
+		 * @since    1.1
+		 *
+		 * @report   Error
 		 */
 		'no-undef': 'error',
 
@@ -549,6 +654,8 @@ module.exports = {
 		 *
 		 * @author Aubrey Portwood
 		 * @since  1.1
+		 *
+		 * @report   Error
 		 */
 		'camelcase': 'error'
 	}
