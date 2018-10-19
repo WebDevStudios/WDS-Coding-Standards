@@ -7,7 +7,7 @@
  */
 
 /* globals module */
-var wdscs = ( function( wdscs ) {
+var wdscsUtils = ( function( wdscsUtils ) {
 
 	/**
 	 * Get the content of a node.
@@ -18,7 +18,7 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {Object} node The node.
 	 * @return {String}      The content of the node.
 	 */
-	wdscs.getNodeContent = function( node ) {
+	wdscsUtils.getNodeContent = function( node ) {
 		return node.value.toLowerCase().trim();
 	};
 
@@ -31,7 +31,7 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {String}  content The content.
 	 * @return {Boolean}         True if it is, false if not.
 	 */
-	wdscs.isDocblock = function( content ) {
+	wdscsUtils.isDocblock = function( content ) {
 		return -1 !== content.indexOf( '\n' );
 	};
 
@@ -45,8 +45,8 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {String} content The content of the docblock.
 	 * @return {Mixed}          True if it does, false if not, -1 if not a docblock.
 	 */
-	wdscs.docBlockContentHasTag = function( tag, content ) {
-		if ( wdscs.isDocblock( content ) ) {
+	wdscsUtils.docBlockContentHasTag = function( tag, content ) {
+		if ( wdscsUtils.isDocblock( content ) ) {
 
 			// If we don't have an @author in the content.
 			if ( -1 === content.indexOf( '@author' ) ) {
@@ -71,8 +71,8 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {Object} node Node Object.
 	 * @return {Mixed}       True if it is, false if not, -1 if not a docblock.
 	 */
-	wdscs.docBlockIsFileDocBlock = function( node ) {
-		if ( wdscs.isDocblock( wdscs.getNodeContent( node ) ) ) {
+	wdscsUtils.docBlockIsFileDocBlock = function( node ) {
+		if ( wdscsUtils.isDocblock( wdscsUtils.getNodeContent( node ) ) ) {
 
 			// If on the first line of the file.
 			if ( 0 === node.range[0] ) {
@@ -99,7 +99,7 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {Object} node    Node Object.
 	 * @param  {string} tag     The tag, e.g. @since, @author.
 	 */
-	wdscs.docBlockRequireTag = function( context, node, tag ) {
+	wdscsUtils.docBlockRequireTag = function( context, node, tag ) {
 
 		// Get the node of the associated docblock.
 		var docBlockNode = context.getJSDocComment( node );
@@ -108,10 +108,10 @@ var wdscs = ( function( wdscs ) {
 		if ( docBlockNode ) {
 
 			// Warn about missing @author tag.
-			if ( false === wdscs.docBlockContentHasTag( tag, wdscs.getNodeContent( docBlockNode ) ) ) {
+			if ( false === wdscsUtils.docBlockContentHasTag( tag, wdscsUtils.getNodeContent( docBlockNode ) ) ) {
 
 				// Report the message for that tag.
-				context.report( docBlockNode, wdscs.messages.requiredTags[ tag ] );
+				context.report( docBlockNode, wdscsUtils.messages.requiredTags[ tag ] );
 			}
 		}
 	};
@@ -127,27 +127,27 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {string} tag     The tag, e.g. @since, @author.
 	 * @param  {String} type    The type, e.g. FunctionExpression or *.
 	 */
-	wdscs.docBlockRequireTagOnType = function( context, node, tag, type ) {
+	wdscsUtils.docBlockRequireTagOnType = function( context, node, tag, type ) {
 		if ( context.getJSDocComment( node ) ) {
 
 			// If e.g. * or FunctionDeclaration, etc...
 			if ( type === node.type ) {
 
 				// Require the tag on this thing.
-				wdscs.docBlockRequireTag( context, node, tag );
+				wdscsUtils.docBlockRequireTag( context, node, tag );
 			}
 		}
 	};
 
 	// Messages (so we can re-use them).
-	wdscs.messages = {
+	wdscsUtils.messages = {
 		requiredTags: {
 			'@author': 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.',
 			'@since': 'Documenting the version this was introduced is recommended. If you aren\'t using any official versioning standard, consider using the date, e.g.: Friday, October 19, 2018.'
 		}
 	};
 
-	return wdscs;
+	return wdscsUtils;
 } ( {} ) );
 
 /**
@@ -187,7 +187,7 @@ module.exports = {
 					'FunctionExpression': function( node ) {
 						if ( 'CallExpression' === node.parent.type ) {
 
-							// Don't run this on ife's or anonymous functions because they're hard to document.s
+							// Don't run this on ife's or anonymous functions because they're hard to document.
 							return;
 						}
 
@@ -250,7 +250,7 @@ module.exports = {
 					 * @param  {Object} node Node Object.
 					 */
 					'*': function( node ) {
-						wdscs.docBlockRequireTagOnType( context, node, '@author', 'FunctionDeclaration' );
+						wdscsUtils.docBlockRequireTagOnType( context, node, '@author', 'FunctionDeclaration' );
 					}
 				};
 			}
@@ -287,7 +287,7 @@ module.exports = {
 					 * @param  {Object} node Node Object.
 					 */
 					'*': function( node ) {
-						wdscs.docBlockRequireTag( context, node, '@since' );
+						wdscsUtils.docBlockRequireTag( context, node, '@since' );
 					}
 				};
 			}
