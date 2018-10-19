@@ -48,7 +48,3 @@ Each release is tested in all the editors we can find. But you can get 🌮  if 
 When an update is made to the [WordPress-Coding-Standard](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/releases), it needs to be reviewed by WDS and then if approved, included in our [composer.json](https://github.com/WebDevStudios/WDS-Coding-Standards/blob/master/composer.json) file, and then a new release tagged.
 
 Once a new release is tagged, all WDS developers need to update their local WDS-Coding-Standards per the [composer installation instructions](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation#composer).
-
-# Additional Approval of New Rules
-
-All new rules must be documented in README.md and releases require at least a LEAD, BED, and FED review to go into `master`.
