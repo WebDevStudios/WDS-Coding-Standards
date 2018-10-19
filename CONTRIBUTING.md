@@ -29,15 +29,19 @@ _________________
 
 # Changes
 
-When adding __any__ changes, each change must go through the following PR process:
+When adding __any__ changes, each change must go through the following process:
 
 - Branch off the latest release branch in development, e.g. `release-x.x`
-- Add your changes
-- Document your changes in `README.md` under the release changelog, and link to your issue or PR
-- Submit PR against the release branch (if your PR is not entirely complete, add the `Not Ready` label and it will be ignored until you remove it)
-- Ensure your PR merges into the next release
-- Please test your PR in editors, and add labels accordingly
-- Each PR should have at least one review to get into the release
+- Add your changes (document `@since` with `NEXT`)
+- Document your changes in `README.md` under the changelog for the release
+- Make sure your changes work using command line
+- Submit PR against the release branch
+    - If your PR is not entirely complete, add the `Not Ready` label and it will be ignored until you remove it
+    - Ensure your PR merges into the next release branch as the base
+
+## Editor Testing
+
+Each release is tested in all the editors we can find. But you can get 🌮  if you pre-test your changes in editors (add labels accordingly).
 
 # Upstream Updates
 
