@@ -22,7 +22,7 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {Object} node The node.
 	 * @return {String}      The content of the node.
 	 */
-	wdscs.getContent = function( node ) {
+	wdscs.getNodeContent = function( node ) {
 		return node.value.toLowerCase().trim();
 	};
 
@@ -49,7 +49,7 @@ var wdscs = ( function( wdscs ) {
 	 * @param  {String} content The content of the docblock.
 	 * @return {Mixed}          True if it does, false if not, -1 if not a docblock.
 	 */
-	wdscs.docBlockHasTag = function( tag, content ) {
+	wdscs.docBlockContentHasTag = function( tag, content ) {
 		if ( wdscs.isDocblock( content ) ) {
 
 			// If we don't have an @author in the content.
@@ -67,7 +67,7 @@ var wdscs = ( function( wdscs ) {
 	};
 
 	wdscs.docBlockIsFileDocBlock = function( node ) {
-		if ( wdscs.isDocblock( wdscs.getContent( node ) ) ) {
+		if ( wdscs.isDocblock( wdscs.getNodeContent( node ) ) ) {
 
 			// If on the first line of the file.
 			if ( 0 === node.range[0] ) {
@@ -84,9 +84,34 @@ var wdscs = ( function( wdscs ) {
 		return -1;
 	};
 
+	wdscs.docBlockRequireTagOn = function( context, node, tag, type ) {
+		if ( context.getJSDocComment( node ) ) {
+
+			// If e.g. a function something() {...
+			if ( type === node.type ) {
+
+				// Get the node of the associated docblock.
+				var docBlockNode = context.getJSDocComment( node );
+
+				// We have a docblock.
+				if ( docBlockNode ) {
+
+					// Warn about missing @author tag.
+					if ( false === wdscs.docBlockContentHasTag( tag, wdscs.getNodeContent( docBlockNode ) ) ) {
+
+						// Report the message for that tag.
+						context.report( docBlockNode, wdscs.messages.requiredTags[ tag ] );
+					}
+				}
+			}
+		}
+	};
+
 	// Messages (so we can re-use them).
 	wdscs.messages = {
-		'@author': 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.'
+		requiredTags: {
+			'@author': 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.'
+		}
 	};
 
 	return wdscs;
@@ -97,12 +122,10 @@ module.exports = {
 		'required-tags': {
 			create: function( context ) {
 				return {
-					'BlockComment': function( node ) {
 
-						// Warn about missing @author tag.
-						if ( ! wdscs.docBlockIsFileDocBlock( node ) && false === wdscs.docBlockHasTag( '@author', wdscs.getContent( node ) ) ) {
-							context.report( node, wdscs.messages['@author'] );
-						}
+					// On every node in the document.
+					'*': function( node ) {
+						wdscs.docBlockRequireTagOn( context, node, '@author', 'FunctionDeclaration' );
 					}
 				};
 			}
