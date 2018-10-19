@@ -1,4 +1,4 @@
-# Developing WDSCS
+# Developing WDSCS or using the Bleeding Edge
 
 In order to develop on WDSCS, you will have to run your PHPCS ruleset off a clone of the repo. Trying to develop off `~/.composer/*` proves problematic.
 
