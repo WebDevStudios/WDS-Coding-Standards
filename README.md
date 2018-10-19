@@ -4,6 +4,15 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
 
 <a href="https://webdevstudios.com/contact/"><img src="https://webdevstudios.com/wp-content/uploads/2018/04/wds-github-banner.png" alt="WebDevStudios. WordPress for big brands."></a>
 
+## Leadership
+
+- @aubreypwd (Senior Developer)
+    + Writes & Integrates coding Standards/Maintains standards
+- @gregrickaby (Director of Engineering)
+    + High level Approval / Leadership
+- @jrfoells (Senior Developer)
+    + Future "Journeyman"
+
 ## How to Install
 
 Simply grab a cup of ☕&nbsp; and follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation).
@@ -21,6 +30,10 @@ ___________________
 
 - Docblocks are required on function assignments in JS
 - `@author` is suggested in docblocks in both PHP & JS
+
+## 1.2
+
+- WordPress Coding Standards update to v1.1.0 #50 #46
 
 ## 1.1.1
 
