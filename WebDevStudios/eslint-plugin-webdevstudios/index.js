@@ -139,6 +139,21 @@ var wdscsUtils = ( function( wdscsUtils ) {
 		}
 	};
 
+	/**
+	 * Are we processing a theme file?
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  NEXT
+	 *
+	 * @param  {Object}  that this object in create: below.
+	 * @return {Boolean}   True if it is, false if not.
+	 *
+	 * @see  https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit Documentation of this requirement.
+	 */
+	wdscsUtils.isThemeFile = function( that ) {
+		return -1 !== that.getFilename().indexOf( 'wp-content/themes' );
+	};
+
 	// Messages (so we can re-use them).
 	wdscsUtils.messages = {
 		requiredTags: {
@@ -256,7 +271,7 @@ module.exports = {
 			}
 		},
 
-		/*
+		/**
 		 * @since
 		 *
 		 * As in PHPCS, @since is required on all docblocks.
@@ -287,6 +302,15 @@ module.exports = {
 					 * @param  {Object} node Node Object.
 					 */
 					'*': function( node ) {
+
+						// Is this a theme file?
+						if ( wdscsUtils.isThemeFile( this ) ) {
+
+							// Do not apply this, see https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit.
+							return;
+						}
+
+						// Require @since.
 						wdscsUtils.docBlockRequireTag( context, node, '@since' );
 					}
 				};
