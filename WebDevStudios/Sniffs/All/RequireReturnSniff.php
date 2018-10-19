@@ -117,7 +117,6 @@ class RequireReturnSniff extends BaseSniff {
 
 		// See if we can find a function start.
 		$function_start = $file->findNext( T_FUNCTION, $args->doc_block_end );
-
 		if ( ! $function_start ) {
 
 			// This isn't a function, so we're okay.
