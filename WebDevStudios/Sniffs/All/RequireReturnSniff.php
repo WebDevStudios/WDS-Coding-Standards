@@ -155,12 +155,15 @@ class RequireReturnSniff extends BaseSniff {
 			// The level of the return, is it on the same level as the function?
 			if (
 
+				// Is a nested function.
 				(
+
 					// Is a nested closure.
 					isset( $return['nested_parenthesis'] ) ||
 
 					// If it's condition is a closure.
 					isset( $return['conditions'] ) && in_array( 'PHPCS_T_CLOSURE', $return['conditions'] )
+
 				) &&
 
 				// Not at the end of the function...
