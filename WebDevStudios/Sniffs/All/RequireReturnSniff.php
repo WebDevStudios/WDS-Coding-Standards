@@ -153,7 +153,20 @@ class RequireReturnSniff extends BaseSniff {
 			$return = $this->get_token( $position );
 
 			// The level of the return, is it on the same level as the function?
-			if ( isset( $return['level'] ) && $return['level'] !== $this->get_token( $function_end, 'level' ) + 1 ) {
+			if (
+
+				(
+					// Is a nested closure.
+					isset( $return['nested_parenthesis'] ) ||
+
+					// If it's condition is a closure.
+					isset( $return['conditions'] ) && in_array( 'PHPCS_T_CLOSURE', $return['conditions'] )
+				) &&
+
+				// Not at the end of the function...
+				$return['level'] !== $this->get_token( $function_end, 'level' ) + 1
+
+			) {
 
 				// Start where this left off and try again.
 				$cursor = $position + $return['length'];
