@@ -133,6 +133,10 @@ class RequireReturnSniff extends BaseSniff {
 			return 'not_a_function';
 		}
 
+		if ( $this->has_abstract_token( $file, $args ) ) {
+			return 'abstract_function';
+		}
+
 		// This is where the function (it's a function) ends...
 		$function_end = $this->get_token( $function_start, 'scope_closer' );
 
@@ -140,5 +144,19 @@ class RequireReturnSniff extends BaseSniff {
 		$return = $this->find_next( $file, T_RETURN, 'T_RETURN', $function_start, $function_end );
 
 		return $return ? 'has_return_statement' : 'no_return_statement';
+	}
+
+	/**
+	 * Find whether the abstract keyword is present in a function.
+	 *
+	 * @param PHP_CodeSniffer_File $file Reference to the current file.
+	 * @param object               $args Current working arguments.
+	 *
+	 * @author Jeremy Ward <jeremy.ward@webdevstudios.com>
+	 * @since  2018-11-21
+	 * @return int
+	 */
+	private function has_abstract_token( &$file, $args ) {
+		return (bool) $file->findNext( T_ABSTRACT, $args->doc_block_end );
 	}
 }
