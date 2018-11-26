@@ -31,6 +31,7 @@ ___________________
 - WordPress Coding Standards update to v1.1.0 #50 #46
 - Docblocks are required on function assignments in JS (see release notes)
 - `@author` is suggested in docblocks in both PHP & JS (see release notes)
+- Documented `@return` on abstract methods will no longer show a warning about missing `@return`
 
 ### Release Notes
 
