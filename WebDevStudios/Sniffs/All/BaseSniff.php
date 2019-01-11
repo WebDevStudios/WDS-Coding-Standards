@@ -7,14 +7,14 @@
  */
 
 namespace WebDevStudios\Sniffs\All;
-use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer\Sniffs\Sniff;
 
 /**
  * Base class for extending so you can get the below common tools.
  *
  * @since  1.1.0
  */
-abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
+abstract class BaseSniff implements Sniff {
 
 	/**
 	 * The tokens.

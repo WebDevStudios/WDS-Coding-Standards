@@ -10,8 +10,8 @@
  */
 
 namespace WebDevStudios\Sniffs\All;
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
 /**
  * Require the return tag.
@@ -61,11 +61,11 @@ class RequireReturnSniff extends BaseSniff {
 	 * @author Aubrey Portwood
 	 * @since  1.1.0
 	 *
-	 * @param  PHP_CodeSniffer_File $file            The file object.
+	 * @param  \PHP_CodeSniffer\Files\File $file            The file object.
 	 * @param  int                  $doc_block_start Where the docblock starts.
 	 * @return void                                  Skips errors when not working with functions.
 	 */
-	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
+	public function process( \PHP_CodeSniffer\Files\File $file, $doc_block_start ) {
 		$this->tokens = $file->getTokens();
 		$token = $this->tokens[ $doc_block_start ];
 		$doc_block_end = $token['comment_closer'];
@@ -104,7 +104,7 @@ class RequireReturnSniff extends BaseSniff {
 	/**
 	 * Examine a function, and get some context about whether it has a return statement or not.
 	 *
-	 * @param PHP_CodeSniffer_File $file The file.
+	 * @param \PHP_CodeSniffer\Files\File $file The file.
 	 * @param array                $args {
 	 *     Arguments.
 	 *     @type string $doc_block_end Where the docblock ends.
@@ -113,7 +113,7 @@ class RequireReturnSniff extends BaseSniff {
 	 * @since 1.1.0
 	 * @return string Contextual information about the function (if it is a function).
 	 */
-	protected function examine_function( PHP_CodeSniffer_File &$file, $args ) {
+	protected function examine_function( \PHP_CodeSniffer\Files\File &$file, $args ) {
 
 		// See if we can find a function start.
 		$function_start = $file->findNext( T_FUNCTION, $args->doc_block_end );

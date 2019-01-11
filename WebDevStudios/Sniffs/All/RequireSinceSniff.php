@@ -11,7 +11,7 @@
 namespace WebDevStudios\Sniffs\All;
 
 use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use \PHP_CodeSniffer\Files\File;
 
 /**
  * Require the return tag.
@@ -61,7 +61,7 @@ class RequireSinceSniff extends BaseSniff {
 	 *
 	 * @author Aubrey Portwood
 	 *
-	 * @param  PHP_CodeSniffer_File $file            The file object.
+	 * @param  \PHP_CodeSniffer\Files\File $file            The file object.
 	 * @param  int                  $doc_block_start Where the docblock starts.
 	 *
 	 * @since 1.1.0
@@ -71,7 +71,7 @@ class RequireSinceSniff extends BaseSniff {
 	 *
 	 * @return void Early bail if a WordPress theme.
 	 */
-	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
+	public function process( \PHP_CodeSniffer\Files\File $file, $doc_block_start ) {
 		$this->tokens  = $file->getTokens();
 		$token         = $this->tokens[ $doc_block_start ];
 		$doc_block_end = $token['comment_closer'];
