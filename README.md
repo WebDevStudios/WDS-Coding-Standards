@@ -43,6 +43,9 @@ npm install -g /path/to/WebDevStudios/eslint-plugin-webdevstudios
 
 This will install the additional ES Lint rules we've added via `eslint-plugin-webdevstudios/*` which are now going to be required to have custom ES Lint rules.
 
+## 1.2.1
+- WDSCS new requires WPCS 2.0.0-RC1 #60
+
 ## 1.1.1
 
 - WDSCS now requires WPCS 0.14.1 #34; props @jrfoell
