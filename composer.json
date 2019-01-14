@@ -5,6 +5,6 @@
     "minimum-stability": "stable",
     "authors": [],
     "require": {
-        "wp-coding-standards/wpcs": "1.1.0"
+        "wp-coding-standards/wpcs": "1.2.1"
     }
 }
