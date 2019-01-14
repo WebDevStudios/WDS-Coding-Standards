@@ -28,27 +28,29 @@
 	</rule>
 
 	<!--
-		This allows the following type of function call:
+	Support concatenated function calls.
 
-		thing( 'par1', [
-			'par2array1',
-			'par2array2',
-		] );
+	This allows the following type of function call:
+
+	    thing( 'par1', [
+		    'par2array1',
+		    'par2array2',
+	    ] );
 
 
-		...which WPCS usually makes you do:
+	...which WPCS usually makes you do:
 
-		$array = [
-			'par2array1',
-			'par2array2',
-		];
+	    $array = [
+		    'par2array1',
+		    'par2array2',
+	    ];
 
-		thing( 'par1', $array );
+	    thing( 'par1', $array );
 
-		We commonly use condensed functions in themes, so let's keep them around.
+	We commonly use condensed functions in themes, so let's keep them around.
 
-		@since 1.2.0
-		@author Aubrey Portwood <aubrey@webdevstudios.com>
+	@since 1.2.0
+	@author Aubrey Portwood <aubrey@webdevstudios.com>
 	-->
 	<rule ref="PEAR.Functions.FunctionCallSignature">
 	  <properties>
@@ -57,6 +59,13 @@
 	  </properties>
 	  <severity>0</severity>
 	</rule>
+
+	<!--
+	Supports the concatenated function calls above.
+
+	@since 1.2.0
+	@author Aubrey Portwood <aubrey@webdevstudios.com>
+	-->
 	<rule ref="PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket" />
 	<rule ref="PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket" />
 </ruleset>
