@@ -15,7 +15,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Get the content of a node.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {Object} node The node.
 	 * @return {String}      The content of the node.
@@ -28,7 +28,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Is the content a docblock.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {String}  content The content.
 	 * @return {Boolean}         True if it is, false if not.
@@ -41,7 +41,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Does docblock content have a tag?
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {String} tag     The tag, e.g. @author, @since.
 	 * @param  {String} content The content of the docblock.
@@ -68,7 +68,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Is a node a file docblock?
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {Object} node Node Object.
 	 * @return {Mixed}       True if it is, false if not, -1 if not a docblock.
@@ -95,7 +95,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Require a docblock on node.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {Object} context Context Object.
 	 * @param  {Object} node    Node Object.
@@ -122,7 +122,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Require a docblock tag on node type.
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {Object} context Context Object.
 	 * @param  {Object} node    Node Object.
@@ -145,7 +145,7 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * Are we processing a theme file?
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-	 * @since  NEXT
+	 * @since  1.2.0
 	 *
 	 * @param  {Object}  that this object in create: below.
 	 * @return {Boolean}   True if it is, false if not.
@@ -177,7 +177,7 @@ module.exports = {
 		 * Require function expressions to need docblock.
 		 *
 		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since  NEXT
+		 * @since  1.2.0
 		 */
 		'functionExpressionRequireDocblock': {
 
@@ -185,7 +185,7 @@ module.exports = {
 			 * Rule Handler.
 			 *
 			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-			 * @since  NEXT
+			 * @since  1.2.0
 			 *
 			 * @param  {Object} context Context handler.
 			 * @return {Object}         Handler object.
@@ -197,7 +197,7 @@ module.exports = {
 					 * FunctionExpression Handler.
 					 *
 					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-					 * @since  NEXT
+					 * @since  1.2.0
 					 *
 					 * @param  {Object} node Node Object.
 					 */
@@ -242,7 +242,7 @@ module.exports = {
 		 * As in PHPCS, @author is helpful.
 		 *
 		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since  NEXT
+		 * @since  1.2.0
 		 */
 		'@author': {
 
@@ -250,7 +250,7 @@ module.exports = {
 			 * Rule Handler.
 			 *
 			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-			 * @since  NEXT
+			 * @since  1.2.0
 			 *
 			 * @param  {Object} context Context handler.
 			 * @return {Object}         Handler object.
@@ -262,7 +262,7 @@ module.exports = {
 					 * On Every Node Handler.
 					 *
 					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-					 * @since  NEXT
+					 * @since  1.2.0
 					 *
 					 * @param  {Object} node Node Object.
 					 */
@@ -279,7 +279,7 @@ module.exports = {
 		 * As in PHPCS, @since is required on all docblocks.
 		 *
 		 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since NEXT
+		 * @since 1.2.0
 		 */
 		'@since': {
 
@@ -287,7 +287,7 @@ module.exports = {
 			 * Rule Handler.
 			 *
 			 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-			 * @since  NEXT
+			 * @since  1.2.0
 			 *
 			 * @param  {Object} context Context handler.
 			 * @return {Object}         Handler object.
@@ -299,7 +299,7 @@ module.exports = {
 					 * On Every Node Handler.
 					 *
 					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
-					 * @since  NEXT
+					 * @since  1.2.0
 					 *
 					 * @param  {Object} node Node Object.
 					 */

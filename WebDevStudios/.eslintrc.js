@@ -63,7 +63,7 @@ module.exports = {
 		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/5
 		 *
 		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since     NEXT
+		 * @since     1.2.0
 		 *
 		 * @report    Warning
 		 */
@@ -76,7 +76,7 @@ module.exports = {
 		 * @see       https://github.com/WebDevStudios/WDS-Coding-Standards/issues/5
 		 *
 		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since     NEXT
+		 * @since     1.2.0
 		 *
 		 * @report    Error
 		 */
@@ -90,7 +90,7 @@ module.exports = {
 		 * @standards WDS
 		 *
 		 * @author    Aubrey Portwood <aubrey@webdevstudios.com>
-		 * @since     NEXT
+		 * @since     1.2.0
 		 *
 		 * @report    Error
 		 */
