@@ -26,19 +26,20 @@ ___________________
 
 # Changelog
 
-## NEXT
+## 1.2.0
 
-- WordPress Coding Standards update to v1.1.0 #50 #46
+- WordPress Coding Standards update to `1.2.1`
+- PHPCS 3.3.2 installed via composer
 - Docblocks are required on function assignments in JS (see release notes)
 - `@author` is suggested in docblocks in both PHP & JS (see release notes)
 - Documented `@return` on abstract methods will no longer show a warning about missing `@return`
 
 ### Release Notes
 
-This installation requires you to do an additional step:
+This installation requires you to do an additional step to get `eslint` to work:
 
 ```bash
-npm install -g /path/to/WebDevStudios/eslint-plugin-webdevstudios
+npm install -g "/path/to/WebDevStudios/eslint-plugin-webdevstudios"
 ```
 
 This will install the additional ES Lint rules we've added via `eslint-plugin-webdevstudios/*` which are now going to be required to have custom ES Lint rules.

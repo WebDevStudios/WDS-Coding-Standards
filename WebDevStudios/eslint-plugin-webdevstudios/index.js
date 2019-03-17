@@ -4,6 +4,8 @@
  * In order for this to work you need to:
  *
  *     npm install -g /path/to/eslint-plugin-webdevstudios
+ *
+ * @since 1.2.0
  */
 
 /* globals module */
