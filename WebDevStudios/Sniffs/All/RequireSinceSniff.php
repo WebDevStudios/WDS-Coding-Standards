@@ -76,13 +76,13 @@ class RequireSinceSniff extends BaseSniff {
 		$token         = $this->tokens[ $doc_block_start ];
 		$doc_block_end = $token['comment_closer'];
 
-		// The @return in the comment block, false by default.
+		// The @since in the comment block, false by default.
 		$have_an_at_since_tag = false;
 
 		for ( $i = $doc_block_start; $i <= $doc_block_end; $i++ ) {
 			if ( stristr( $this->tokens[ $i ]['content'], '@since' ) ) {
 
-				// We found an @return in the block.
+				// We found an @since in the block.
 				$have_an_at_since_tag = $this->tokens[ $i ];
 			}
 		}

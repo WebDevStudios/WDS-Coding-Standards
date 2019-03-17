@@ -110,7 +110,7 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @since  1.1.0
 	 *
 	 * @param int    $position The position of the token.
-	 * @param string $key      The key you want from the array daya, leave empty to get all data.
+	 * @param string $key      The key you want from the array data, leave empty to get all data.
 	 *
 	 * @return mixed An array of data if you request all information, any type given the key may be any type in the array.
 	 */
@@ -123,31 +123,134 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	}
 
 	/**
+	 * Get the position the token's content ends.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  array $token  Token.
+	 * @return int           The position.
+	 */
+	protected function get_comment_token_closer_position( $token ) {
+		return isset( $token['comment_closer'] ) ? $token['comment_closer'] : 0;
+	}
+
+	/**
+	 * Get a token's content.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  array $token  Token.
+	 * @return string        The content.
+	 */
+	protected function get_token_content( $token ) {
+		return isset( $token['content'] ) ? $token['content'] : '';
+	}
+
+	/**
 	 * Wrapper for PHP_CodeSniffer_File->findNext() with validation.
 	 *
-	 * @param PHP_CodeSniffer_File $file The file.
-	 * @param int                  $token      The token position.
-	 * @param string               $token_type The token type for validation.
+	 * @param PHP_CodeSniffer_File $file       The file.
+	 * @param int                  $token_type The token type e.g. from http://php.net/manual/en/tokens.php.
+	 * @param string               $validate   The token type for validation..
 	 * @param int                  $start      The position to start searching.
 	 * @param int                  $end        The position to stop searching.
-	 * @param boolean              $trail      Whether to go past $end and search again.
+	 * @param boolean              $local      Whether to go past $end and search again.
 	 *
 	 * @return boolean|mixed False if the token type did not validate, the value of findNext else.
+	 *
+	 * @see  https://pear.php.net/package/PHP_CodeSniffer/docs/3.2.3/apidoc/PHP_CodeSniffer/File.html#methodfindNext
 	 */
-	protected function find_next( $file, $token, $token_type = null, $start, $end, $trail = false ) {
+	protected function find_next( $file, $token_type, $validate = null, $start, $end = null, $local = false ) {
 
 		// Do findNext.
-		$t = $file->findNext( $token, $start, $end, $trail );
+		$t = $file->findNext( $token_type, $start, $end, $local );
 
 		// Validate it.
-		$valid = $token_type === $this->get_token( $t, 'type' );
-
-		if ( $token_type && ! $valid ) {
+		$valid = $validate === $this->get_token( $t, 'type' );
+		if ( $validate && ! $valid ) {
 
 			// Not valid.
 			return false;
 		}
 
 		return $t;
+	}
+
+	/**
+	 * Find out if the given token type is on the next line.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  PHP_CodeSniffer_File $file File.
+	 * @param  int $token_type The        Token Type Code.
+	 * @param  string $token_name         The token name e.g. T_FUNCTION for validation.
+	 * @param  int $position              The position of the current token.
+	 * @return boolean                    True if, on the next line, that token type is found.
+	 */
+	protected function next_line_is_token_type( $file, $token_type, $token_name, $position ) {
+		$token    = $this->get_token( $position );
+		$function = $this->find_next( $file, $token_type, $token_name, $position );
+
+		if ( $function ) {
+			$function = $this->get_token( $function );
+			if ( $function['line'] === $token['line'] + 1 ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the contents of a line.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  object $file File object from PHPCS.
+	 * @param  int    $line The line.
+	 * @return string       The contents.
+	 */
+	protected function get_line_content( $file, $line ) {
+
+		// The filename of the file.
+		$filename = $file->getFilename();
+
+		// Seek to the line.
+		$spl = new \SplFileObject( $filename );
+		$spl->seek( $line - 1 ); // Zero-based.
+
+		// Get the content.
+		return $spl->current();
+	}
+
+	/**
+	 * Does the next line have content.
+	 *
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
+	 * @since  1.2.0
+	 *
+	 * @param  object $file     The file object from PHPCS.
+	 * @param  string $text     The string to search for on that line.
+	 * @param  int    $position The position of the token.
+	 * @return bool             True if it does, false if not.
+	 */
+	protected function next_line_has( $file, $text, $position ) {
+		$token = $this->get_token( $position );
+
+		foreach ( $this->tokens as $t ) {
+			if ( $token['line'] + 1 === $t['line'] ) {
+				$content = $this->get_line_content( $file, $t['line'] );
+
+				if ( stristr( $content, $text ) ) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 }

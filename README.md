@@ -4,6 +4,15 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
 
 <a href="https://webdevstudios.com/contact/"><img src="https://webdevstudios.com/wp-content/uploads/2018/04/wds-github-banner.png" alt="WebDevStudios. WordPress for big brands."></a>
 
+## Leadership
+
+- __Aubrey Portwood (Senior BED Developer)__
+    + Writes & Integrates Coding Standards/Maintains Standards
+- __Greg Rickaby (Director of Engineering)__
+    + High level Approval / Leadership
+- __Corey Collins (FED Lead)__
+    + VS Code Testing
+
 ## How to Install
 
 Simply grab a cup of ☕&nbsp; and follow directions [here](https://github.com/WebDevStudios/WDS-Coding-Standards/wiki/Installation).
@@ -14,18 +23,26 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ___________________
 
-# Rules
-
-See these files for information (in doc-blocks) about any rules we've adopted.
-
-- [@since](WebDevStudios/Sniffs/All/RequireSinceSniff.php)
-- [@return](WebDevStudios/Sniffs/All/RequireReturnSniff.php)
-- [JS Rules](WebDevStudios/.eslintrc.js)
-- [Sass Rules](WebDevStudios/.sass-lint.yml)
-
-___________________
 
 # Changelog
+
+## 1.2.0
+
+- WordPress Coding Standards update to `1.2.1`
+- PHPCS 3.3.2 installed via composer
+- Docblocks are required on function assignments in JS (see release notes)
+- `@author` is suggested in docblocks in both PHP & JS (see release notes)
+- Documented `@return` on abstract methods will no longer show a warning about missing `@return`
+
+### Release Notes
+
+This installation requires you to do an additional step to get `eslint` to work:
+
+```bash
+npm install -g "/path/to/WebDevStudios/eslint-plugin-webdevstudios"
+```
+
+This will install the additional ES Lint rules we've added via `eslint-plugin-webdevstudios/*` which are now going to be required to have custom ES Lint rules.
 
 ## 1.1.1
 

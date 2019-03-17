@@ -86,17 +86,17 @@ class RequireReturnSniff extends BaseSniff {
 			'doc_block_end' => $doc_block_end,
 		] );
 
-		if ( 'not_a_function' === $examine_function ) {
+		if ( -1 === $examine_function ) {
 
 			// The code after the docblock isn't a function, so this doesn't matter.
 			return;
 		}
 
-		if ( ! $have_an_at_return_tag && 'has_return_statement' === $examine_function ) {
+		if ( ! $have_an_at_return_tag && true === $examine_function ) {
 			$this->error( $file, $doc_block_end, 'Please document your return for this function in an @return tag.' );
 		}
 
-		if ( $have_an_at_return_tag && 'no_return_statement' === $examine_function ) {
+		if ( $have_an_at_return_tag && false === $examine_function ) {
 			$this->error( $file, $doc_block_end, 'Your function does not return anything, no need for @return tag.' );
 		}
 	}
@@ -117,28 +117,89 @@ class RequireReturnSniff extends BaseSniff {
 
 		// See if we can find a function start.
 		$function_start = $file->findNext( T_FUNCTION, $args->doc_block_end );
-
 		if ( ! $function_start ) {
 
 			// This isn't a function, so we're okay.
-			return 'not_a_function';
+			return -1;
 		}
 
 		$doc_block_end_line = $this->get_token( $args->doc_block_end, 'line' );
 		$function_start_line = $this->get_token( $function_start, 'line' );
-
 		if ( $function_start_line !== $doc_block_end_line + 1 ) {
 
 			// This also isn't a function, it's okay.
-			return 'not_a_function';
+			return -1;
+		}
+
+		if ( $this->has_abstract_token( $file, $args ) ) {
+			return 'abstract_function';
 		}
 
 		// This is where the function (it's a function) ends...
 		$function_end = $this->get_token( $function_start, 'scope_closer' );
 
-		// See if we can find a return in the function scope.
-		$return = $this->find_next( $file, T_RETURN, 'T_RETURN', $function_start, $function_end );
+		// Assume no return for now.
+		$return = false;
 
-		return $return ? 'has_return_statement' : 'no_return_statement';
+		// We'll start searching the function block starting off here.
+		$cursor = $function_start;
+		while ( $cursor <= $function_end ) {
+
+			// Position of the next found return.
+			$position = $this->find_next( $file, T_RETURN, 'T_RETURN', $cursor, $function_end );
+			if ( false === $position ) {
+
+				// No position for return statement, just stop here.
+				break;
+			}
+
+			// Get the token to examine.
+			$return = $this->get_token( $position );
+
+			// The level of the return, is it on the same level as the function?
+			if (
+
+				// Is a nested function.
+				(
+
+					// Is a nested closure.
+					isset( $return['nested_parenthesis'] ) ||
+
+					// If it's condition is a closure.
+					isset( $return['conditions'] ) && in_array( 'PHPCS_T_CLOSURE', $return['conditions'] )
+
+				) &&
+
+				// Not at the end of the function...
+				$return['level'] !== $this->get_token( $function_end, 'level' ) + 1
+
+			) {
+
+				// Start where this left off and try again.
+				$cursor = $position + $return['length'];
+
+			} else {
+
+				// This must be the return we're looking for.
+				return true;
+			}
+		}
+
+		// Must not have found a valid one.
+		return false;
+	}
+
+	/**
+	 * Find whether the abstract keyword is present in a function.
+	 *
+	 * @param PHP_CodeSniffer_File $file Reference to the current file.
+	 * @param object               $args Current working arguments.
+	 *
+	 * @author Jeremy Ward <jeremy.ward@webdevstudios.com>
+	 * @since  2018-11-21
+	 * @return int
+	 */
+	private function has_abstract_token( &$file, $args ) {
+		return (bool) $file->findNext( T_ABSTRACT, $args->doc_block_end );
 	}
 }
