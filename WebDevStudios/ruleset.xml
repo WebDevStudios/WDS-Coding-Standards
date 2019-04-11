@@ -12,7 +12,7 @@
 		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName" />
 		<exclude name="WordPress.Arrays.ArrayDeclarationSpacing.AssociativeKeyFound" />
 	</rule>
 
