@@ -26,6 +26,8 @@ ___________________
 
 # Changelog
 
+## 1.3.0
+
 ## 1.2.0
 
 - WordPress Coding Standards update to `1.2.1`
