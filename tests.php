@@ -1,4 +1,10 @@
 <?php
+/**
+ * Tests (PHP)
+ *
+ * @since    Friday, May 3, 2019
+ * @package  WebDevStudios\Sniffs
+ */
 
 /**
  * A function with no return.
