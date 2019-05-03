@@ -10,8 +10,6 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
     + Writes & Integrates Coding Standards/Maintains Standards
 - __Greg Rickaby (Director of Engineering)__
     + High level Approval / Leadership
-- __Corey Collins (FED Lead)__
-    + VS Code Testing
 
 ## How to Install
 
