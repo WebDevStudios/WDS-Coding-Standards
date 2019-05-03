@@ -1,4 +1,11 @@
 /**
+ * Examples (JavaScript)
+ *
+ * @since    Friday, May 3, 2019
+ * @package  WebDevStudios\Sniffs
+ */
+
+/**
  * A function with no return.
  *
  * This function has a documented at-return but does not return anything.

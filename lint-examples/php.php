@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests (PHP)
+ * Examples (PHP)
  *
  * @since    Friday, May 3, 2019
  * @package  WebDevStudios\Sniffs
