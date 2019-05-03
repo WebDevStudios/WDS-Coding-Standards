@@ -10,8 +10,8 @@
 
 namespace WebDevStudios\Sniffs\All;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use \PHP_CodeSniffer\Sniffs\Sniff;
+use \PHP_CodeSniffer\Files\File;
 
 /**
  * Require the return tag.
@@ -59,13 +59,12 @@ class RequireAuthorSniff extends BaseSniff {
 	/**
 	 * Process file.
 	 *
-	 * @param  PHP_CodeSniffer_File $file  The file object.
-	 * @param  int                  $start Where the docblock starts.
+	 * @param  \PHP_CodeSniffer\Files\File $file  The file object.
+	 * @param  int                         $start Where the docblock starts.
 	 *
 	 * @since                              1.2.0
-	 * @return void                        Early bail if we don't enforce this on the docblock.
 	 */
-	public function process( PHP_CodeSniffer_File $file, $start ) {
+	public function process( File $file, $start ) {
 
 		// Get the tokens.
 		$this->tokens = $file->getTokens();
@@ -93,7 +92,7 @@ class RequireAuthorSniff extends BaseSniff {
 
 				// But not commented out.
 				&& ! $this->next_line_is_token_type( $file, T_COMMENT, 'T_COMMENT', $end_position ),
-		) );
+		), true );
 
 		// We're enforcing this...
 		if ( $enforce ) {
@@ -118,7 +117,6 @@ class RequireAuthorSniff extends BaseSniff {
 				// We didn't find @author, let them know.
 				$this->warn( $file, $end_position, 'Documenting @author is helpful. If the author is unknown, you can use @author Unknown.' );
 			}
-
 		} // enforce.
 	}
 }

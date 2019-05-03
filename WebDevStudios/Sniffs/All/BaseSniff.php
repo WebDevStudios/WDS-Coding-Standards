@@ -7,14 +7,16 @@
  */
 
 namespace WebDevStudios\Sniffs\All;
-use PHP_CodeSniffer_Sniff;
+
+use \PHP_CodeSniffer\Sniffs\Sniff;
+use \PHP_CodeSniffer\Files\File;
 
 /**
  * Base class for extending so you can get the below common tools.
  *
  * @since  1.1.0
  */
-abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
+abstract class BaseSniff implements Sniff {
 
 	/**
 	 * The tokens.
@@ -32,10 +34,10 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @author Aubrey Portwood
 	 * @since  1.1.0
 	 *
-	 * @param  PHP_CodeSniffer_File $file     The file.
-	 * @param  int                  $where    Where the error happened.
-	 * @param  string               $message  The message.
-	 * @param  int                  $severity The severity, defaults to 0.
+	 * @param  \PHP_CodeSniffer\Files\File $file     The file.
+	 * @param  int                         $where    Where the error happened.
+	 * @param  string                      $message  The message.
+	 * @param  int                         $severity The severity, defaults to 0.
 	 */
 	protected function error( &$file, $where, $message, $severity = 0 ) {
 		$this->console( (object) array(
@@ -52,10 +54,10 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @author Aubrey Portwood
 	 * @since  1.1.0
 	 *
-	 * @param  PHP_CodeSniffer_File $file     The file.
-	 * @param  int                  $where    Where the warning happened.
-	 * @param  string               $message  The message.
-	 * @param  int                  $severity The severity, defaults to 0.
+	 * @param  \PHP_CodeSniffer\Files\File $file     The file.
+	 * @param  int                         $where    Where the warning happened.
+	 * @param  string                      $message  The message.
+	 * @param  int                         $severity The severity, defaults to 0.
 	 */
 	protected function warn( &$file, $where, $message, $severity = 0 ) {
 		$this->console( (object) array(
@@ -72,13 +74,14 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @author Aubrey Portwood
 	 * @since  1.1.0
 	 *
-	 * @param array                $args {
+	 * @param array                       $args {
 	 *     Arguments.
 	 *     @type string $message The message.
 	 *     @type int    $start   The starting position of the record.
 	 *     @type string $log     Whether to log an `error` or a `warning`.
 	 * }
-	 * @param PHP_CodeSniffer_File $phpcs_file The file.
+	 *
+	 * @param \PHP_CodeSniffer\Files\File $phpcs_file The file.
 	 *
 	 * @return void Early bail when we finally log to the console.
 	 */
@@ -149,16 +152,19 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	}
 
 	/**
-	 * Wrapper for PHP_CodeSniffer_File->findNext() with validation.
+	 * Wrapper for File->findNext() with validation.
 	 *
-	 * @param PHP_CodeSniffer_File $file       The file.
-	 * @param int                  $token_type The token type e.g. from http://php.net/manual/en/tokens.php.
-	 * @param string               $validate   The token type for validation..
-	 * @param int                  $start      The position to start searching.
-	 * @param int                  $end        The position to stop searching.
-	 * @param boolean              $local      Whether to go past $end and search again.
+	 * @param \PHP_CodeSniffer\Files\File $file       The file.
+	 * @param int                         $token_type The token type e.g. from http://php.net/manual/en/tokens.php.
+	 * @param string                      $validate   The token type for validation..
+	 * @param int                         $start      The position to start searching.
+	 * @param int                         $end        The position to stop searching.
+	 * @param boolean                     $local      Whether to go past $end and search again.
 	 *
 	 * @return boolean|mixed False if the token type did not validate, the value of findNext else.
+	 *
+	 * @since  Unknown
+	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 	 *
 	 * @see  https://pear.php.net/package/PHP_CodeSniffer/docs/3.2.3/apidoc/PHP_CodeSniffer/File.html#methodfindNext
 	 */
@@ -184,11 +190,11 @@ abstract class BaseSniff implements PHP_CodeSniffer_Sniff {
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 	 * @since  1.2.0
 	 *
-	 * @param  PHP_CodeSniffer_File $file File.
-	 * @param  int $token_type The        Token Type Code.
-	 * @param  string $token_name         The token name e.g. T_FUNCTION for validation.
-	 * @param  int $position              The position of the current token.
-	 * @return boolean                    True if, on the next line, that token type is found.
+	 * @param  \PHP_CodeSniffer\Files\File $file File.
+	 * @param  int                         $token_type The Token Type Code.
+	 * @param  string                      $token_name The token name e.g. T_FUNCTION for validation.
+	 * @param  int                         $position   The position of the current token.
+	 * @return boolean                                 True if, on the next line, that token type is found.
 	 */
 	protected function next_line_is_token_type( $file, $token_type, $token_name, $position ) {
 		$token    = $this->get_token( $position );

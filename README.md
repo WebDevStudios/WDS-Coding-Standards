@@ -26,6 +26,10 @@ ___________________
 
 # Changelog
 
+## 2.0.0
+
+PHPCS Upgrade Guide: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Version-3.0-Upgrade-Guide
+
 ## 1.2.0
 
 - WordPress Coding Standards update to `1.2.1`
