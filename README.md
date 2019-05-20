@@ -10,8 +10,6 @@ WebDevStudios in-house linting and coding standards for your favorite editor.
     + Writes & Integrates Coding Standards/Maintains Standards
 - __Greg Rickaby (Director of Engineering)__
     + High level Approval / Leadership
-- __Corey Collins (FED Lead)__
-    + VS Code Testing
 
 ## How to Install
 
@@ -25,6 +23,14 @@ ___________________
 
 
 # Changelog
+
+## 2.0.0
+
+PHPCS Upgrade Guide: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Version-3.0-Upgrade-Guide
+
+This release updates to the new WPCS `^2.x`. 
+
+- Reworked all our custom sniffs to use new `PHP_CodeSniffer` structure <sup>[a210b73](https://github.com/WebDevStudios/WDS-Coding-Standards/commit/a210b73cd46ce76d4cfbd8eea578d4b4c3d7eab3)</sup>
 
 ## 1.2.0
 
