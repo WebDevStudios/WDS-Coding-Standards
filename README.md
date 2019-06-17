@@ -24,6 +24,10 @@ ___________________
 
 # Changelog
 
+## NEXT
+
+- Upon `composer require "webdevstudios/wds-coding-standards"`, composer will automatically update `phpcs` with available coding standards (including WDSCS) installed via composer <sup>[PR](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/72)</sup>
+
 ## 2.0.0
 
 PHPCS Upgrade Guide: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Version-3.0-Upgrade-Guide
