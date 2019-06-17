@@ -13,6 +13,11 @@
     },
     "scripts": {
         "post-install-cmd": "sh post-install-cmd.sh",
-        "post-update-cmd": "sh post-update-cmd.sh"
+        "post-package-install": "sh post-install-cmd.sh",
+
+        "post-update-cmd": "sh post-update-cmd.sh",
+        "post-package-update": "sh post-update-cmd.sh",
+
+        "pre-package-uninstall": "sh pre-package-uninstall.sh"
     }
 }
