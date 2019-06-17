@@ -12,7 +12,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
     },
     "scripts": {
-        "post-install-cmd": "npm install -g \"$HOME/.composer/vendor/webdevstudios/wds-coding-standards/WebDevStudios/eslint-plugin-webdevstudios\"",
-        "post-update-cmd": "npm install -g \"$HOME/.composer/vendor/webdevstudios/wds-coding-standards/WebDevStudios/eslint-plugin-webdevstudios\""
+        "post-install-cmd": "if [ -x \"$(command -v npm)\" ]; then; npm install -g wds-eslint; fi;",
+        "post-update-cmd": "if [ -x \"$(command -v npm)\" ]; then; npm update -g wds-eslint; fi;"
     }
 }
