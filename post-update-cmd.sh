@@ -7,7 +7,6 @@ if ! [ -x $(command -v npm) ]; then
 fi
 
 if [[ $thepwd == *".composer"* ]]; then
-	npm update -g git://git@github.com:WebDevStudios/eslint.git
-else
-	npm update git://git@github.com:WebDevStudios/eslint.git
+	npm update -g eslint eslint-config-wordpress git://git@github.com:WebDevStudios/eslint-plugin-webdevstudios.git
 fi
+
