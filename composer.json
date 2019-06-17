@@ -12,7 +12,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
     },
     "scripts": {
-        "post-install-cmd": "if [ -x \"$(command -v npm)\" ]; then; npm install -g wds-eslint; fi;",
-        "post-update-cmd": "if [ -x \"$(command -v npm)\" ]; then; npm update -g wds-eslint; fi;"
+        "post-install-cmd": "sh post-install-cmd.sh",
+        "post-update-cmd": "sh post-update-cmd.sh"
     }
 }
