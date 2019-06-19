@@ -146,18 +146,29 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 *
 	 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 	 * @since  1.2.0
+	 * @since  2.0.1 Fixed issue with that.getFilename not working.
 	 *
-	 * @param  {Object}  that this object in create: below.
-	 * @return {Boolean}   True if it is, false if not.
+	 * @param  {String}  file The file being linted.
+	 * @return {Boolean}      True if it is, false if not.
 	 *
 	 * @see  https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit Documentation of this requirement.
 	 */
-	wdscsUtils.isThemeFile = function( that ) {
-		if ( ! that.hasOwnProperty( 'getFilename' ) ) {
+	wdscsUtils.isThemeFile = function( file ) {
+		if ( 'string' !== typeof file ) {
 			return false;
 		}
 
-		return -1 !== that.getFilename().indexOf( 'wp-content/themes' );
+		var isThemeFile = file.indexOf( 'wp-content/themes' );
+
+		if ( false === isThemeFile ) {
+			return false;
+		}
+
+		if ( -1 === isThemeFile ) {
+			return false;
+		}
+
+		return Boolean( isThemeFile );
 	};
 
 	// Messages (so we can re-use them).
@@ -310,7 +321,7 @@ module.exports = {
 					'*': function( node ) {
 
 						// Is this a theme file?
-						if ( wdscsUtils.isThemeFile( this ) ) {
+						if ( wdscsUtils.isThemeFile( context.getFilename() ) ) {
 
 							// Do not apply this, see https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit.
 							return;
