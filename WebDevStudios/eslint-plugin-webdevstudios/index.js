@@ -153,6 +153,10 @@ var wdscsUtils = ( function( wdscsUtils ) {
 	 * @see  https://docs.google.com/document/d/16-wN2i9Fe2fpq24PMMQqu80vBvCVNvm2kpgwtcfsJXE/edit Documentation of this requirement.
 	 */
 	wdscsUtils.isThemeFile = function( that ) {
+		if ( ! that.hasOwnProperty( 'getFilename' ) ) {
+			return false;
+		}
+
 		return -1 !== that.getFilename().indexOf( 'wp-content/themes' );
 	};
 
