@@ -6,9 +6,7 @@
     "authors": [],
     "require": {
         "wp-coding-standards/wpcs": "2.1.0",
-        "squizlabs/php_codesniffer": "^3.3.1"
-    },
-    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.3.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5"
     },
     "scripts": {
