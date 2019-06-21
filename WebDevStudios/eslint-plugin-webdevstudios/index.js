@@ -315,6 +315,7 @@ module.exports = {
 					 *
 					 * @author Aubrey Portwood <aubrey@webdevstudios.com>
 					 * @since  1.2.0
+					 * @since  2.0.1 Fix for issue where that.getFilename was causing issues.
 					 *
 					 * @param  {Object} node Node Object.
 					 */
