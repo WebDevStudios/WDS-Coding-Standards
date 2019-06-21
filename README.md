@@ -24,6 +24,10 @@ ___________________
 
 # Changelog
 
+## 2.0.1
+
+- Fixes issue where `getFilename` error happening in latest `eslint` <sup>[PR](https://github.com/WebDevStudios/WDS-Coding-Standards/pull/74)</sup>
+
 ## 2.0.0
 
 PHPCS Upgrade Guide: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Version-3.0-Upgrade-Guide
