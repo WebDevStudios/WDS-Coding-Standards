@@ -10,8 +10,9 @@
  */
 
 namespace WebDevStudios\Sniffs\All;
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+
+use \PHP_CodeSniffer\Sniffs\Sniff;
+use \PHP_CodeSniffer\Files\File;
 
 /**
  * Require the return tag.
@@ -61,13 +62,15 @@ class RequireReturnSniff extends BaseSniff {
 	 * @author Aubrey Portwood
 	 * @since  1.1.0
 	 *
-	 * @param  PHP_CodeSniffer_File $file            The file object.
-	 * @param  int                  $doc_block_start Where the docblock starts.
-	 * @return void                                  Skips errors when not working with functions.
+	 * @param  \PHP_CodeSniffer\Files\File $file            The file object.
+	 * @param  int                         $doc_block_start Where the docblock starts.
+	 * @return void                                         Skips errors when not working with functions.
 	 */
-	public function process( PHP_CodeSniffer_File $file, $doc_block_start ) {
+	public function process( File $file, $doc_block_start ) {
 		$this->tokens = $file->getTokens();
+
 		$token = $this->tokens[ $doc_block_start ];
+
 		$doc_block_end = $token['comment_closer'];
 
 		// The @ return in the comment block, false by default.
@@ -104,8 +107,8 @@ class RequireReturnSniff extends BaseSniff {
 	/**
 	 * Examine a function, and get some context about whether it has a return statement or not.
 	 *
-	 * @param PHP_CodeSniffer_File $file The file.
-	 * @param array                $args {
+	 * @param \PHP_CodeSniffer\Files\File $file The file.
+	 * @param array                       $args {
 	 *     Arguments.
 	 *     @type string $doc_block_end Where the docblock ends.
 	 * }
@@ -113,7 +116,7 @@ class RequireReturnSniff extends BaseSniff {
 	 * @since 1.1.0
 	 * @return string Contextual information about the function (if it is a function).
 	 */
-	protected function examine_function( PHP_CodeSniffer_File &$file, $args ) {
+	protected function examine_function( File &$file, $args ) {
 
 		// See if we can find a function start.
 		$function_start = $file->findNext( T_FUNCTION, $args->doc_block_end );
@@ -124,7 +127,9 @@ class RequireReturnSniff extends BaseSniff {
 		}
 
 		$doc_block_end_line = $this->get_token( $args->doc_block_end, 'line' );
+
 		$function_start_line = $this->get_token( $function_start, 'line' );
+
 		if ( $function_start_line !== $doc_block_end_line + 1 ) {
 
 			// This also isn't a function, it's okay.
@@ -166,7 +171,7 @@ class RequireReturnSniff extends BaseSniff {
 					isset( $return['nested_parenthesis'] ) ||
 
 					// If it's condition is a closure.
-					isset( $return['conditions'] ) && in_array( 'PHPCS_T_CLOSURE', $return['conditions'] )
+					isset( $return['conditions'] ) && in_array( 'PHPCS_T_CLOSURE', $return['conditions'], true )
 
 				) &&
 
@@ -192,8 +197,8 @@ class RequireReturnSniff extends BaseSniff {
 	/**
 	 * Find whether the abstract keyword is present in a function.
 	 *
-	 * @param PHP_CodeSniffer_File $file Reference to the current file.
-	 * @param object               $args Current working arguments.
+	 * @param \PHP_CodeSniffer\Files\File $file Reference to the current file.
+	 * @param object                      $args Current working arguments.
 	 *
 	 * @author Jeremy Ward <jeremy.ward@webdevstudios.com>
 	 * @since  2018-11-21
