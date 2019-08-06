@@ -26,6 +26,10 @@ ___________________
 
 # Changelog
 
+## 1.2.1
+
+- Removes some `class-` prefix and `-template` suffix requirements from filenames.
+
 ## 1.2.0
 
 - WordPress Coding Standards update to `1.2.1`
